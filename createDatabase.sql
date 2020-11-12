@@ -1,5 +1,5 @@
 CREATE SCHEMA IF NOT EXISTS GroceryStore;
-USE grocery;
+USE GroceryStore;
 
 CREATE TABLE IF NOT EXISTS Department (
   id INT NOT NULL PRIMARY KEY,
