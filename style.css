@@ -1,0 +1,128 @@
+html{
+    min-width: 740;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    font-family: "Lato", sans-serif;
+}
+
+nav{
+    padding-left: 15px;
+    padding-bottom: -10px;
+    background-image: linear-gradient(white -100%, rgb(224, 159, 38) 200%);
+    border-bottom: 2px solid rgb(243, 185, 59);
+    height: 43px;
+}
+
+#logo{
+    margin-left: 10px;
+    vertical-align: middle;
+    display: inline-block;
+    height: 40px;
+    width: 116.216px;
+}
+
+#searchForm{
+    display: inline-block;
+    width: 70%;
+}
+
+#searchBar{
+    vertical-align: middle;
+    margin-left: 10px;
+    height: 30px;
+    vertical-align: middle;
+    width: 50%;
+    border-radius: 10px;
+    border: 1px solid grey;
+    border-right: none;
+    padding-left: 8px;
+}
+  
+#searchBar:focus{
+    outline: none;
+}
+
+#searchButton{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    vertical-align: middle;
+    margin-left: -15px;
+    height: 30px;
+    width: 50px;
+    border-left: none;
+    border: 1px solid grey;
+    background-color: rgb(255, 171, 14);
+}
+
+#menuButton{
+    vertical-align: middle;
+    font-size:30px;
+    cursor:pointer
+}
+
+#accountBox{
+    margin-left: -27%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#accountIcon{
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+}
+
+#accountLink{
+    vertical-align: bottom;
+    margin-left: 5px;
+    text-decoration: none;
+    color: black;
+}
+
+#cartBox{
+    margin-left: 2%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.sidenav{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(white -100%, rgb(224, 159, 38) 200%);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a{
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    display: block;
+    transition: 0.3s;
+}
+  
+.sidenav a:hover{
+    color: #f1f1f1;
+}
+  
+.sidenav .closebtn{
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+  
+@media screen and (max-height: 450px){
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
