@@ -1,4 +1,4 @@
-<html id="main" lang="en">
+<html lang="en" id="searchHTML">
     <head>
         <meta charset="UTF-8">
         <title>NED's Grocery</title>
@@ -8,9 +8,9 @@
         <link rel="stylesheet" href="slider.css">
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
+    <body id="searchBody">
         <header>
-            <nav>
+            <nav id="searchNav">
                 <div id="mySidenav" class="sidenav">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <p>Categories</p>
@@ -34,7 +34,7 @@
                 </div>
             </nav>
         </header>
-        <main>
+        <main id="searchMain">
             <div id="sideBar">
                 <p id="filter">Filter Results</p>
                 <form>
@@ -62,10 +62,95 @@
                     </ul>
                 </form>
             </div>
+            <div id="results">
+                <p id="resultsCount">39 Search Results for "eggs"</p>
+                <table id="resultsTable">
+                    <form>
+                        <tr>
+                            <td>
+                                <div class="item">
+                                    <img class="itemPic" src="images/apple.jpg">
+                                    <p class="itemPrice">$1.99</p>
+                                    <p class="itemDescription">Apple</p>
+                                    <button class="addToCart" type=submit>Add to Cart</button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item">
+                                    <img class="itemPic" src="images/apple.jpg">
+                                    <p class="itemPrice">$1.99</p>
+                                    <p class="itemDescription">Apple</p>
+                                    <button class="addToCart" type=submit>Add to Cart</button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item">
+                                    <img class="itemPic" src="images/apple.jpg">
+                                    <p class="itemPrice">$1.99</p>
+                                    <p class="itemDescription">Apple</p>
+                                    <button class="addToCart" type=submit>Add to Cart</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item">
+                                    <img class="itemPic" src="images/apple.jpg">
+                                    <p class="itemPrice">$1.99</p>
+                                    <p class="itemDescription">Apple</p>
+                                    <button class="addToCart" type=submit>Add to Cart</button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item">
+                                    <img class="itemPic" src="images/apple.jpg">
+                                    <p class="itemPrice">$1.99</p>
+                                    <p class="itemDescription">Apple</p>
+                                    <button class="addToCart" type=submit>Add to Cart</button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item">
+                                    <img class="itemPic" src="images/apple.jpg">
+                                    <p class="itemPrice">$1.99</p>
+                                    <p class="itemDescription">Apple</p>
+                                    <button class="addToCart" type=submit>Add to Cart</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item">
+                                    <img class="itemPic" src="images/apple.jpg">
+                                    <p class="itemPrice">$1.99</p>
+                                    <p class="itemDescription">Apple</p>
+                                    <button class="addToCart" type=submit>Add to Cart</button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item">
+                                    <img class="itemPic" src="images/apple.jpg">
+                                    <p class="itemPrice">$1.99</p>
+                                    <p class="itemDescription">Apple</p>
+                                    <button class="addToCart" type=submit>Add to Cart</button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="item">
+                                    <img class="itemPic" src="images/apple.jpg">
+                                    <p class="itemPrice">$1.99</p>
+                                    <p class="itemDescription">Apple</p>
+                                    <button class="addToCart" type=submit>Add to Cart</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </form>
+                </table>
+            </div>
         </main>
-        <script src="index.js"></script>  
     </body>
-    <footer>
+    <footer id="searchFooter">
         <p>&copy; 2020 NED's Grocery</p>
     </footer>
+    <script src="index.js"></script>  
 </html>

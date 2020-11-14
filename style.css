@@ -2,18 +2,45 @@ html{
     min-width: 750;
 }
 
-body{
+#searchHTML{
+    min-width: 823px;
+    height: 100%;
+}
+
+#homeBody{
     padding: 0;
     margin: 0;
     font-family: "Avenir Next", "Avenir", sans-serif;
 }
 
-nav{
+#searchBody{
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: "Avenir Next", "Avenir", sans-serif;
+}
+
+#searchMain{
+    height: 100%;
+}
+
+#homeNav{
     padding-left: 15px;
     padding-bottom: -10px;
     background-image: linear-gradient(white -100%, rgb(224, 159, 38) 200%);
     border-bottom: 2px solid rgb(243, 185, 59);
     height: 43px;
+}
+
+#searchNav{
+    position: fixed;
+    width: 100%;
+    padding-left: 15px;
+    padding-bottom: -10px;
+    background-image: linear-gradient(white -100%, rgb(224, 159, 38) 200%);
+    border-bottom: 2px solid rgb(243, 185, 59);
+    height: 43px;
+    min-width: 800px;
 }
 
 #logo{
@@ -70,8 +97,8 @@ nav{
 }
 
 #accountIcon{
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
     margin-right: 5px;
 }
 
@@ -155,14 +182,14 @@ nav{
     .sidenav a {font-size: 18px;}
   }
 
-footer{    
+#homeFooter{    
     width: 100%;
     position: absolute;
     bottom: 0;
     background-image: linear-gradient(white -200%, rgb(224, 159, 38) 200%);
 }
 
-footer p{
+#homeFooter p{
     text-align: center;
     font-size: 13px;
 }
@@ -177,111 +204,179 @@ footer p{
     75% { left: -300%; }
     95% { left: -300%; }
     100% { left: -400%; }
-    }
+}
     
-    body { margin: 0; } 
-    div#slider { overflow: hidden; }
-    div#slider figure img { width: 20%; float: left; }
-    div#slider figure { 
-      position: relative;
-      width: 500%;
-      margin: 0;
-      left: 0;
-      text-align: left;
-      font-size: 0;
-      animation: 15s slidy infinite; 
-    }
+body { 
+    margin: 0; 
+} 
+div#slider { overflow: hidden; }
+div#slider figure img { width: 20%; float: left; }
+div#slider figure { 
+    position: relative;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    text-align: left;
+    font-size: 0;
+    animation: 15s slidy infinite; 
+}
     
-    #slider{
-        margin-left: auto;
-        margin-right: auto;
-        width: 600px;
-        height: 150px;
-        border: 2px solid orange;
-        margin-top: 20px;
-    }
+#slider{
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    height: 150px;
+    border: 2px solid orange;
+    margin-top: 20px;
+}
 
-    #welcome{
-        color: rgb(255, 94, 0);
-        margin-left: 35px;
-        font-size: 30px;
-        margin-top: 19px;
-    }
+#welcome{
+    color: rgb(255, 94, 0);
+    margin-left: 35px;
+    font-size: 30px;
+    margin-top: 19px;
+}
 
-    #welcome2{
-        color: rgb(255, 153, 0);
-        margin-left: 35px;
-        font-size: 20px;
-        margin-top: -24px;
-    }
+#welcome2{
+    color: rgb(255, 153, 0);
+    margin-left: 35px;
+    font-size: 20px;
+    margin-top: -24px;
+}
 
-    #container{
-        
-    }
+#savings{
+    display: inline-block;
+    width: 40%;
+    height: 35%;
+    text-align: center;
+    margin-left: 50px;
+    background-image: url("images/sticky-note.png");
+    background-position: center center;
+    background-size: 500px;
+    background-repeat: no-repeat;
+    border: 2px solid black;
+}
 
-    #savings{
-        display: inline-block;
-        width: 40%;
-        height: 35%;
-        text-align: center;
-        margin-left: 50px;
-        background-image: url("images/sticky-note.png");
-        background-position: center center;
-        background-size: 500px;
-        background-repeat: no-repeat;
-        border: 2px solid black;
-    }
+#shopOnline{
+    display: inline-block;
+    border: 2px solid black;
+    width: 40%;
+    height: 35%;
+    float: right;
+    text-align: center;
+    margin-right: 50px;
+    background-image: url("images/sticky-note.png");
+    background-position: center center;
+    background-size: 500px;
+    background-repeat: no-repeat;
+}
 
-    #shopOnline{
-        display: inline-block;
-        border: 2px solid black;
-        width: 40%;
-        height: 35%;
-        float: right;
-        text-align: center;
-        margin-right: 50px;
-        background-image: url("images/sticky-note.png");
-        background-position: center center;
-        background-size: 500px;
-        background-repeat: no-repeat;
-    }
+.tag{
+    margin-top: 5px;
+    border-radius: 50%;
+    height: 80px;
+    weight: 80px;
+    text-decoration: none;
+    border: 2px solid black;
+}
 
-    .tag{
-        margin-top: 5px;
-        border-radius: 50%;
-        height: 80px;
-        weight: 80px;
-        text-decoration: none;
-        border: 2px solid black;
-    }
+.tag2{
+    margin-top: 1px;
+    font-weight: bold;
+}
 
-    .tag2{
-        margin-top: 1px;
-        font-weight: bold;
-    }
+#sideBar{
+    display: inline-block;
+    text-align: center;
+    margin-top: 0px;
+    min-height: 100%;
+    width: 19%;
+    background-image: linear-gradient(white -100%, rgb(255, 166, 0) 200%);
+    border-right: 2px solid black;
+}
 
-    #sideBar{
-        text-align: center;
-        margin-top: -16px;
-        height: 90%;
-        width: 19%;
-        background-image: linear-gradient(white -100%, rgb(255, 166, 0) 200%);
-        border-right: 2px solid black;
-    }
+#filter{
+    padding-top: 45px;
+    text-decoration: underline;
+    margin-bottom: -5px;
+}
 
-    #filter{
-        padding-top: 15px;
-        text-decoration: underline;
-        margin-bottom: -5px;
-    }
+#filterList{
+    list-style-type: none;
+}
 
-    #filterList{
-        list-style-type: none;
-    }
+#filterList li{
+    text-align: left;
+    margin-left: -30px;
+    margin-bottom: 5px;
+}
 
-    #filterList li{
-        text-align: left;
-        margin-left: -30px;
-        margin-bottom: 5px;
+#resultsCount{
+    margin-top: 39px;
+    margin-bottom: 5px;
+    font-size: 23px;
+}
 
-    }
+#results {
+    display: inline-block;
+    float: right;
+    width: 75%;
+    min-height: 82%;
+    margin-right: 23px;
+    margin-top: 15px;
+}
+
+.item{
+    background-color: white;
+    height: 250px;
+    width: 184px;
+    border: 5px solid rgb(231, 230, 230);
+    text-align: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.itemPic{
+    height: 125px;
+    width: 125px;
+}
+
+.itemPrice{
+    font-weight: bold;
+}
+
+.itemDescription{
+    margin-top: -9px;
+}
+
+.addToCart{
+    margin-top: -4px;
+    border: 1px solid grey;
+    font-weight: bold;
+    width: 130px;
+	height: 30px;
+	background: #ffab00;
+	font-size: 12px;
+	line-height: 18px;
+	letter-spacing: 2px;
+	color: rgb(255, 255, 255);
+	text-transform: uppercase;
+    border-radius: 24px; 
+}
+
+.addToCart:hover{
+    background: #ff7b00;
+    cursor:pointer;
+}
+
+#searchFooter{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-image: linear-gradient(white -200%, rgb(224, 159, 38) 200%);
+}
+
+#searchFooter p{
+    text-align: center;
+    font-size: 13px;
+}

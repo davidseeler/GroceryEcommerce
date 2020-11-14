@@ -1,4 +1,4 @@
-<html id="main" lang="en">
+<html lang="en" id="homeHTML">
     <head>
         <meta charset="UTF-8">
         <title>NED's Grocery</title>
@@ -8,9 +8,9 @@
         <link rel="stylesheet" href="slider.css">
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
+    <body id="homeBody">
         <header>
-            <nav>
+            <nav id="homeNav">
                 <div id="mySidenav" class="sidenav">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <p>Categories</p>
@@ -21,7 +21,7 @@
                     <a href="#">Dairy and Eggs</a>
                 </div>
                 <span id="menuButton" onclick="openNav()">&#9776;</span>
-                <a href="main.php"><img id="logo" src="images/logo.png"></a>
+                <a href="home.php"><img id="logo" src="images/logo.png"></a>
                 <form id="searchForm">
                     <input id="searchBar" type=text placeholder="Search Products">
                     <button id="searchButton" type=submit><i class="fa fa-search"></i></button>
@@ -34,7 +34,7 @@
                 </div>
             </nav>
         </header>
-        <main>
+        <main id="homeMain">
             <div id="slider">
                 <figure>
                     <img src="images/vegetables.png" alt>
@@ -59,7 +59,7 @@
                     </p>
                 </div>
                 <div id="shopOnline">
-                    <a href="search.html"><img class="tag" src="images/groceries.jpg"></a>
+                    <a href="search.php"><img class="tag" src="images/groceries.jpg"></a>
                     <p class="tag2">Shop Online</p>
                     <p>
                         DELIVERY<br>
@@ -71,7 +71,7 @@
         </main>
         <script src="index.js"></script>  
     </body>
-    <footer>
+    <footer id="homeFooter">
         <p>&copy; 2020 NED's Grocery</p>
     </footer>
 </html>
