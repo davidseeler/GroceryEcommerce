@@ -5,7 +5,7 @@ html{
 body{
     padding: 0;
     margin: 0;
-    font-family: "Lato", sans-serif;
+    font-family: "Avenir Next", "Avenir", sans-serif;
 }
 
 nav{
@@ -199,4 +199,89 @@ footer p{
         height: 150px;
         border: 2px solid orange;
         margin-top: 20px;
+    }
+
+    #welcome{
+        color: rgb(255, 94, 0);
+        margin-left: 35px;
+        font-size: 30px;
+        margin-top: 19px;
+    }
+
+    #welcome2{
+        color: rgb(255, 153, 0);
+        margin-left: 35px;
+        font-size: 20px;
+        margin-top: -24px;
+    }
+
+    #container{
+        
+    }
+
+    #savings{
+        display: inline-block;
+        width: 40%;
+        height: 35%;
+        text-align: center;
+        margin-left: 50px;
+        background-image: url("images/sticky-note.png");
+        background-position: center center;
+        background-size: 500px;
+        background-repeat: no-repeat;
+        border: 2px solid black;
+    }
+
+    #shopOnline{
+        display: inline-block;
+        border: 2px solid black;
+        width: 40%;
+        height: 35%;
+        float: right;
+        text-align: center;
+        margin-right: 50px;
+        background-image: url("images/sticky-note.png");
+        background-position: center center;
+        background-size: 500px;
+        background-repeat: no-repeat;
+    }
+
+    .tag{
+        margin-top: 5px;
+        border-radius: 50%;
+        height: 80px;
+        weight: 80px;
+        text-decoration: none;
+        border: 2px solid black;
+    }
+
+    .tag2{
+        margin-top: 1px;
+        font-weight: bold;
+    }
+
+    #sideBar{
+        text-align: center;
+        margin-top: -16px;
+        height: 90%;
+        width: 19%;
+        background-image: linear-gradient(white -100%, rgb(255, 166, 0) 200%);
+        border-right: 2px solid black;
+    }
+
+    #filter{
+        padding-top: 15px;
+        text-decoration: underline;
+        margin-bottom: -5px;
+    }
+
+    #filterList{
+        list-style-type: none;
+    }
+
+    #filterList li{
+        text-align: left;
+        margin-left: -30px;
+        margin-bottom: 5px;
+
     }

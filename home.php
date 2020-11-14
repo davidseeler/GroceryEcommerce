@@ -44,6 +44,30 @@
                     <img src="images/dairy.png" alt>
                 </figure>
             </div>
+            <p id="welcome">Welcome</p>
+            <p id="welcome2">
+                Here at NED's, you get the best &ndash; for less!
+            </p>
+            <div id="container">
+                <div id="savings">
+                    <img class="tag" src="images/price-tag.png">
+                    <p class="tag2">Savings</p>
+                    <p>
+                        WEEKLY AD<br>
+                        DIGITAL COUPONS<br>
+                        ALL DEALS<br>
+                    </p>
+                </div>
+                <div id="shopOnline">
+                    <a href="search.html"><img class="tag" src="images/groceries.jpg"></a>
+                    <p class="tag2">Shop Online</p>
+                    <p>
+                        DELIVERY<br>
+                        IN-STORE PICKUP<br>
+                        CURBSIDE PICKUP<br>
+                    </p>
+                </div>
+            </div>
         </main>
         <script src="index.js"></script>  
     </body>
