@@ -1,5 +1,5 @@
 html{
-    min-width: 740;
+    min-width: 750;
 }
 
 body{
@@ -88,6 +88,19 @@ nav{
     vertical-align: middle;
 }
 
+#cartIcon{
+    height: 25px;
+    width: 25px;
+    margin-right: 2px;
+}
+
+#cartLink{
+    vertical-align: bottom;
+    margin-left: 5px;
+    text-decoration: none;
+    color: black;
+}
+
 .sidenav{
     height: 100%;
     width: 0;
@@ -101,7 +114,7 @@ nav{
     padding-top: 60px;
 }
 
-.sidenav a{
+.sidenav p{
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
@@ -109,9 +122,24 @@ nav{
     display: block;
     transition: 0.3s;
 }
+
+.sidenav p{
+    margin-top: -5px;
+    margin-bottom: -2px;
+}
+
+.sidenav a{
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    display: block;
+    transition: 0.3s;
+    font-size: 20px;
+}
   
 .sidenav a:hover{
-    color: #f1f1f1;
+    color: orange;
 }
   
 .sidenav .closebtn{
@@ -126,3 +154,49 @@ nav{
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   }
+
+footer{    
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-image: linear-gradient(white -200%, rgb(224, 159, 38) 200%);
+}
+
+footer p{
+    text-align: center;
+    font-size: 13px;
+}
+
+@keyframes slidy {
+    0% { left: 0%; }
+    20% { left: 0%; }
+    25% { left: -100%; }
+    45% { left: -100%; }
+    50% { left: -200%; }
+    70% { left: -200%; }
+    75% { left: -300%; }
+    95% { left: -300%; }
+    100% { left: -400%; }
+    }
+    
+    body { margin: 0; } 
+    div#slider { overflow: hidden; }
+    div#slider figure img { width: 20%; float: left; }
+    div#slider figure { 
+      position: relative;
+      width: 500%;
+      margin: 0;
+      left: 0;
+      text-align: left;
+      font-size: 0;
+      animation: 15s slidy infinite; 
+    }
+    
+    #slider{
+        margin-left: auto;
+        margin-right: auto;
+        width: 600px;
+        height: 150px;
+        border: 2px solid orange;
+        margin-top: 20px;
+    }
