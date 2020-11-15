@@ -337,8 +337,9 @@ div#slider figure {
 }
 
 .itemPic{
-    height: 125px;
-    width: 125px;
+    margin-top: 12px;
+    height: 100px;
+    width: 100px;
 }
 
 .itemPrice{
@@ -347,6 +348,9 @@ div#slider figure {
 
 .itemDescription{
     margin-top: -9px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .addToCart{
@@ -354,13 +358,13 @@ div#slider figure {
     border: 1px solid grey;
     font-weight: bold;
     width: 130px;
-	height: 30px;
-	background: #ffab00;
-	font-size: 12px;
-	line-height: 18px;
-	letter-spacing: 2px;
-	color: rgb(255, 255, 255);
-	text-transform: uppercase;
+    height: 30px;
+    background: #ffab00;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 2px;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
     border-radius: 24px; 
 }
 

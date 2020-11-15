@@ -1,3 +1,21 @@
+<?php
+    include('database.php');
+
+    if (!isset($_GET['search'])){
+        $search = "";
+    }
+    else{
+        $search = $_GET['search'];
+    }
+
+    $query = "SELECT count(*) FROM Product WHERE name like '%$search%'";
+    $results = $db->query($query);
+    $count = $results->fetch();
+
+    $query = "SELECT * FROM Product WHERE name like '%$search%'";
+    $results = $db->query($query);
+?>
+
 <html lang="en" id="searchHTML">
     <head>
         <meta charset="UTF-8">
@@ -21,9 +39,9 @@
                     <a href="#">Dairy and Eggs</a>
                 </div>
                 <span id="menuButton" onclick="openNav()">&#9776;</span>
-                <a href="main.php"><img id="logo" src="images/logo.png"></a>
-                <form id="searchForm">
-                    <input id="searchBar" type=text placeholder="Search Products">
+                <a href="home.php"><img id="logo" src="images/logo.png"></a>
+                <form id="searchForm" method="GET">
+                    <input id="searchBar" type=text placeholder="Search Products" name="search">
                     <button id="searchButton" type=submit><i class="fa fa-search"></i></button>
                 </form>
                 <div id="accountBox">
@@ -63,87 +81,29 @@
                 </form>
             </div>
             <div id="results">
-                <p id="resultsCount">39 Search Results for "eggs"</p>
+                <p id="resultsCount"><?php echo $count['count(*)'];?> Search Results for "<?php echo $search;?>"</p>
                 <table id="resultsTable">
                     <form>
-                        <tr>
+                        <?php
+                        $i = 0;
+                        foreach($results as $product):
+                            if ($i % 3 == 0){
+                                echo "<tr>";
+                            }
+                        ?>
                             <td>
                                 <div class="item">
-                                    <img class="itemPic" src="images/apple.jpg">
-                                    <p class="itemPrice">$1.99</p>
-                                    <p class="itemDescription">Apple</p>
+                                    <img class="itemPic" src="<?php echo $product['imgLink'];?>">
+                                    <p class="itemPrice">$<?php echo $product['price']?></p>
+                                    <p class="itemDescription"><?php echo $product['name']?></p>
                                     <button class="addToCart" type=submit>Add to Cart</button>
                                 </div>
                             </td>
-                            <td>
-                                <div class="item">
-                                    <img class="itemPic" src="images/apple.jpg">
-                                    <p class="itemPrice">$1.99</p>
-                                    <p class="itemDescription">Apple</p>
-                                    <button class="addToCart" type=submit>Add to Cart</button>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="item">
-                                    <img class="itemPic" src="images/apple.jpg">
-                                    <p class="itemPrice">$1.99</p>
-                                    <p class="itemDescription">Apple</p>
-                                    <button class="addToCart" type=submit>Add to Cart</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="item">
-                                    <img class="itemPic" src="images/apple.jpg">
-                                    <p class="itemPrice">$1.99</p>
-                                    <p class="itemDescription">Apple</p>
-                                    <button class="addToCart" type=submit>Add to Cart</button>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="item">
-                                    <img class="itemPic" src="images/apple.jpg">
-                                    <p class="itemPrice">$1.99</p>
-                                    <p class="itemDescription">Apple</p>
-                                    <button class="addToCart" type=submit>Add to Cart</button>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="item">
-                                    <img class="itemPic" src="images/apple.jpg">
-                                    <p class="itemPrice">$1.99</p>
-                                    <p class="itemDescription">Apple</p>
-                                    <button class="addToCart" type=submit>Add to Cart</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="item">
-                                    <img class="itemPic" src="images/apple.jpg">
-                                    <p class="itemPrice">$1.99</p>
-                                    <p class="itemDescription">Apple</p>
-                                    <button class="addToCart" type=submit>Add to Cart</button>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="item">
-                                    <img class="itemPic" src="images/apple.jpg">
-                                    <p class="itemPrice">$1.99</p>
-                                    <p class="itemDescription">Apple</p>
-                                    <button class="addToCart" type=submit>Add to Cart</button>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="item">
-                                    <img class="itemPic" src="images/apple.jpg">
-                                    <p class="itemPrice">$1.99</p>
-                                    <p class="itemDescription">Apple</p>
-                                    <button class="addToCart" type=submit>Add to Cart</button>
-                                </div>
-                            </td>
-                        </tr>
+                        <?php
+                        $i++;
+                        if ($i % 3 == 0){
+                            echo "</tr>";
+                        } endforeach;?>
                     </form>
                 </table>
             </div>
