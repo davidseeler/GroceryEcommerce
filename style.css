@@ -100,6 +100,7 @@ html{
     height: 25px;
     width: 25px;
     margin-right: 5px;
+    vertical-align: bottom;
 }
 
 #accountLink{
@@ -119,6 +120,7 @@ html{
     height: 25px;
     width: 25px;
     margin-right: 2px;
+    vertical-align: bottom;
 }
 
 #cartLink{
@@ -309,6 +311,7 @@ div#slider figure {
     text-align: left;
     margin-left: -30px;
     margin-bottom: 5px;
+    font-size: 14px;
 }
 
 #resultsCount{
@@ -383,4 +386,18 @@ div#slider figure {
 #searchFooter p{
     text-align: center;
     font-size: 13px;
+}
+
+.filterCategory{
+    margin-left: 10px;
+    margin-bottom: -12px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#refresh{
+    margin-top: 30px;
+    margin-left: 50px;
+    height: 35px;
+    width: 35px;
 }
