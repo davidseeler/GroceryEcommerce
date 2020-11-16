@@ -8,7 +8,7 @@
         $search = $_POST['search'];
     }
 
-    $queryHalf = "FROM Product WHERE name like '%$search%'";
+    $queryHalf = "FROM products WHERE name like '%$search%'";
 
     $department = @$_POST['department'];
     if ($department != 0){

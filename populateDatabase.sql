@@ -1,16 +1,16 @@
-USE GroceryStore;
+USE neds_grocery;
 
-INSERT INTO Department VALUES
+INSERT INTO department VALUES
 (1, 'Fruits'),
 (2, 'Vegetables'),
 (3, 'Meat'),
 (4, 'Seafood'),
 (5, 'Dairy and Eggs');
 
-INSERT INTO Product VALUES
+INSERT INTO products VALUES
 (1, 'Apple', '0.50', 1, "images/apple.jpg"),
 (2, 'Banana', '0.35', 1, "images/banana.jpg"),
-(3, 'Avacado', '1.25', 1, "images/avocado.jpg"),
+(3, 'Avocado', '1.25', 1, "images/avocado.jpg"),
 (4, 'Grapefruit', '1.29', 1, "images/grapefruit.jpg"),
 (5, 'Limes', '0.50', 1, "images/limes.jpg"),
 (6, 'Plums', '0.50', 1, "images/plums.jpeg"),

@@ -1,7 +1,17 @@
 <?php
     include('database.php');
 
+    //start_session();
+    //$_SESSION['cartID'] = $account['cartID'];
+
     $id = $_GET['productid'];
+    
+    if (isset($_POST['quantity'])){
+        $quantity = $_POST['quantity'];
+        $statement = "INSERT INTO cartDetail (cartID, productID, quantity) 
+        VALUES (1, '$id', $quantity)";
+        $db->exec($statement);
+    }
 ?>
 
 <html lang="en" id="productViewHTML">
@@ -113,7 +123,7 @@
                 <a href="search.php"><img id="back" src="images/back.png"></a>
                 <div id="productView">
                     <?php 
-                        $query = "SELECT * FROM Product WHERE productID = $id";
+                        $query = "SELECT * FROM products WHERE productID = $id";
                         $result = $db->query($query);
                         $product = $result->fetch();
                     ?>
@@ -132,28 +142,31 @@
                             <img id="starsRating" src="images/starsRating.png">
                             <span><?php echo(rand(200, 3000));?>   ratings</span>
                         </div>
-                        <div class="quantity buttons_added">
-                            <input type="button" value="-" id="minus" onclick="subtractItem()">
-                            <input type="text" value="1" id="quantity">
-                            <input type="button" value="+" id="plus" onclick="addItem()">
-                        </div>
-                        <p>Purchase Options</p>
-                        <div id="purchaseOptions">
-                            <input type=hidden value="<?php echo $product['price'];?>" id="originalPrice">
-                            <div class="purchaseOption" id="topPurchaseOption">
-                                <input type="radio" name="purchaseOption"><label>Pickup</label>
-                                <span id="purchasePrice1">$<?php echo $product['price'];?></span><br>
+                        <form method="post">
+                            <div class="quantity buttons_added">
+                                <input type="hidden" value="<?php echo $id;?>" name="product_id">
+                                <input type="button" value="-" id="minus" onclick="subtractItem()">
+                                <input type="text" value="1" id="quantity" name="quantity">
+                                <input type="button" value="+" id="plus" onclick="addItem()">
                             </div>
-                            <div class="purchaseOption">
-                                <input type="radio" name="purchaseOption"><label>Delivery</label>
-                                <span id="purchasePrice2">$<?php echo $product['price'];?></span><br>
+                            <p>Purchase Options</p>
+                            <div id="purchaseOptions">
+                                <input type=hidden value="<?php echo $product['price'];?>" id="originalPrice">
+                                <div class="purchaseOption" id="topPurchaseOption">
+                                    <input type="radio" name="purchaseOption"><label>Pickup</label>
+                                    <span id="purchasePrice1">$<?php echo $product['price'];?></span><br>
+                                </div>
+                                <div class="purchaseOption">
+                                    <input type="radio" name="purchaseOption"><label>Delivery</label>
+                                    <span id="purchasePrice2">$<?php echo $product['price'];?></span><br>
+                                </div>
+                                <div class="purchaseOption" id="bottomPurchaseOption">
+                                    <input type="radio" name="purchaseOption"><label>Ship</label>
+                                    <span id="purchasePrice3">$<?php echo $product['price'];?></span><br>
+                                </div>
                             </div>
-                            <div class="purchaseOption" id="bottomPurchaseOption">
-                                <input type="radio" name="purchaseOption"><label>Ship</label>
-                                <span id="purchasePrice3">$<?php echo $product['price'];?></span><br>
-                            </div>
-                        </div>
-                        <input id="addToCartSubmit" type="submit" value="Add To Cart">
+                            <input id="addToCartSubmit" type="submit" value="Add To Cart">
+                        </form>
                     </div>
                 </div>
             </main>
