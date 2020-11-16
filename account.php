@@ -1,15 +1,21 @@
 <?php
     include('database.php');
-
     session_start();
+
+    if (!isset($_SESSION['username'])){
+        header("Location: signin.php"); 
+    }
+
+    if (isset($_POST['signout'])){
+        session_unset();
+        header("Location: signin.php");
+    }
 
     $cartID = @$_SESSION['cartID'];
 
     $query = "SELECT SUM(quantity) FROM cartDetail WHERE cartID='$cartID'";
     $itemCount = $db->query($query);
     $itemCount = $itemCount->fetch();
-    //start_session();
-    //$_SESSION['cartID'] = $account['cartID'];
 ?>
 
 <html lang="en" id="homeHTML">
@@ -63,8 +69,14 @@
                 </nav>
             </header>
         </form>
-        <main>
-            <!--start here-->
+        <main id="homeMain">
+            <h1>account details</h2>
+            <p>Username: <?php echo $_SESSION['username'];?></p> 
+            <p>CartID: <?php echo $_SESSION['cartID'];?></p> 
+            <form method="POST">
+                <input name="signout" type="hidden">
+                <input type="submit" value="Sign Out">
+            </form>
         </main>
         <script src="index.js"></script>  
     </body>

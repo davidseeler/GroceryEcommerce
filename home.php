@@ -1,3 +1,14 @@
+<?php
+    include('database.php');
+    session_start();
+
+    $cartID = @$_SESSION['cartID'];
+
+    $query = "SELECT SUM(quantity) FROM cartDetail WHERE cartID='$cartID'";
+    $itemCount = $db->query($query);
+    $itemCount = $itemCount->fetch();
+?>
+
 <html lang="en" id="homeHTML">
     <head>
         <meta charset="UTF-8">
@@ -9,31 +20,46 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body id="homeBody">
-        <header>
-            <nav id="homeNav">
-                <div id="mySidenav" class="sidenav">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <p>Categories</p>
-                    <a href="#">Fruit</a>
-                    <a href="#">Vegetables</a>
-                    <a href="#">Meat</a>
-                    <a href="#">Seafood</a>
-                    <a href="#">Dairy and Eggs</a>
-                </div>
-                <span id="menuButton" onclick="openNav()">&#9776;</span>
-                <a href="home.php"><img id="logo" src="images/logo.png"></a>
-                <form id="searchForm">
-                    <input id="searchBar" type=text placeholder="Search Products">
-                    <button id="searchButton" type=submit><i class="fa fa-search"></i></button>
-                </form>
-                <div id="accountBox">
-                    <a id="accountLink" href="signin.php"><image id="accountIcon" src="images/accountIcon.png"></image>Account</a> 
-                </div>
-                <div id="cartBox">
-                    <a id="cartLink" href="cart.php"><image id="cartIcon" src="images/shoppingCartIcon.png"></image>Shopping Cart</a>
-                </div>
-            </nav>
-        </header>
+        <form method="POST" action="search.php">
+            <header>
+                <nav id="homeNav">
+                    <div id="mySidenav" class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <p>Categories</p>
+                        <a href="#">Fruit</a>
+                        <a href="#">Vegetables</a>
+                        <a href="#">Meat</a>
+                        <a href="#">Seafood</a>
+                        <a href="#">Dairy and Eggs</a>
+                    </div>
+                    <span id="menuButton" onclick="openNav()">&#9776;</span>
+                    <a href="home.php"><img id="logo" src="images/logo.png"></a>
+                    <div id="searchForm">
+                            <input id="searchBar" type=text placeholder="Search Products" name="search">
+                            <button id="searchButton" type=submit><i class="fa fa-search"></i></button>
+                    </div>
+                    <div id="accountBox">
+                        <a id="accountLink" href="account.php"><image id="accountIcon" src="images/accountIcon.png"></image>Account</a> 
+                    </div>
+                    <div id="cartBox">
+                        <a id="cartLink" href="cart.php"><image id="cartIcon" src="images/shoppingCartIcon.png"></image>Shopping Cart</a>
+                        <span id="itemCount">
+                            <?php
+                                if (!isset($_SESSION['cartID'])){
+                                    echo "";
+                                }
+                                else if ($itemCount['SUM(quantity)'] == NULL){
+                                    echo "(0)";
+                                }
+                                else{
+                                    echo "(".$itemCount['SUM(quantity)'].")";
+                                } 
+                                ?>
+                        </span>
+                    </div>
+                </nav>
+            </header>
+        </form>
         <main id="homeMain">
             <div id="slider">
                 <figure>

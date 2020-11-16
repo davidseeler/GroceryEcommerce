@@ -1,15 +1,26 @@
 <?php
     include('database.php');
-
     session_start();
 
-    $cartID = @$_SESSION['cartID'];
+    // Insert values into database once submit is entered
+    if (isset($_POST['username'])){
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $creditcard = $_POST['credit-card'];
+        $email = $_POST['email'];
+        $cartID = rand(1000, 9999); // check for duplicates
 
-    $query = "SELECT SUM(quantity) FROM cartDetail WHERE cartID='$cartID'";
-    $itemCount = $db->query($query);
-    $itemCount = $itemCount->fetch();
-    //start_session();
-    //$_SESSION['cartID'] = $account['cartID'];
+        $statement = "INSERT INTO account (username, password, cartID, creditCard, email)
+        VALUES ('$username', $password, $cartID, $creditcard, '$email')";
+        $db->exec($statement);
+
+        // Create session variables
+        $_SESSION['username'] = $username;
+        $_SESSION['cartID'] = $cartID; 
+
+        // Redirect to account details page
+        header("Location: account.php");
+    }
 ?>
 
 <html lang="en" id="homeHTML">
@@ -63,8 +74,32 @@
                 </nav>
             </header>
         </form>
-        <main>
-            <!--start here-->
+        <main id="homeMain">
+            <form method="POST">
+                <ul>
+                    <li>
+                        <label>Username: </label>
+                        <input name="username" type="text">
+                    </li>
+                    <li>
+                        <label>Password: </label>
+                        <input name="password" type="text">
+                    </li>
+                    <li>
+                        <label>Password Confirmation: </label>
+                        <input name="passwordConfirmation" type="text">
+                    </li>
+                    <li>
+                        <label>Credit Card:</label>
+                        <input name="credit-card" type="text">
+                    </li>
+                    <li>
+                        <label>Email:</label>
+                        <input name="email" type="text">
+                    </li>
+                </ul>
+                <input type="submit">
+            </form>
         </main>
         <script src="index.js"></script>  
     </body>
