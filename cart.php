@@ -1,3 +1,13 @@
+<?php
+    include('database.php');
+
+    $query = "SELECT SUM(quantity) FROM cartDetail";
+    $itemCount = $db->query($query);
+    $itemCount = $itemCount->fetch();
+    //start_session();
+    //$_SESSION['cartID'] = $account['cartID'];
+?>
+
 <html lang="en" id="homeHTML">
     <head>
         <meta charset="UTF-8">
@@ -30,44 +40,13 @@
                     <a id="accountLink" href="signin.php"><image id="accountIcon" src="images/accountIcon.png"></image>Account</a> 
                 </div>
                 <div id="cartBox">
-                    <a id="cartLink" href="cart.php"><image id="cartIcon" src="images/shoppingCartIcon.png"></image>Shopping Cart</a>
+                    <a id="cartLink" href="cart.html"><image id="cartIcon" src="images/shoppingCartIcon.png"></image>Shopping Cart</a>
+                    <span id="itemCount"><?php echo "(".$itemCount['SUM(quantity)'].")";?></span>
                 </div>
             </nav>
         </header>
-        <main id="homeMain">
-            <div id="slider">
-                <figure>
-                    <img src="images/vegetables.png" alt>
-                    <img src="images/fruit.png" alt>
-                    <img src="images/meat.png" alt>
-                    <img src="images/seafood.png" alt>
-                    <img src="images/dairy.png" alt>
-                </figure>
-            </div>
-            <p id="welcome">Welcome</p>
-            <p id="welcome2">
-                Here at NED's, you get the best &ndash; for less!
-            </p>
-            <div id="container">
-                <div id="savings">
-                    <img class="tag" src="images/price-tag.png">
-                    <p class="tag2">Savings</p>
-                    <p>
-                        WEEKLY AD<br>
-                        DIGITAL COUPONS<br>
-                        ALL DEALS<br>
-                    </p>
-                </div>
-                <div id="shopOnline">
-                    <a href="search.php"><img class="tag" src="images/groceries.jpg"></a>
-                    <p class="tag2">Shop Online</p>
-                    <p>
-                        DELIVERY<br>
-                        IN-STORE PICKUP<br>
-                        CURBSIDE PICKUP<br>
-                    </p>
-                </div>
-            </div>
+        <main>
+            <!--start here-->
         </main>
         <script src="index.js"></script>  
     </body>

@@ -564,3 +564,22 @@ div#slider figure {
     margin-top: 65px;
     margin-left: 4%;
 }
+
+#welcomeBox{
+    background-color: #ff7b00;
+    width: 30%;
+    height: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+
+#itemCount{
+    position: absolute;
+    font-size: 13px;
+    margin-left: 5px;
+    margin-top: 0px;
+    display: inline-block;
+    color: #ff3c00;
+    font-weight: bold;
+}

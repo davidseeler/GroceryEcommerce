@@ -1,6 +1,9 @@
 <?php
     include('database.php');
 
+    $query = "SELECT SUM(quantity) FROM cartDetail";
+    $itemCount = $db->query($query);
+    $itemCount = $itemCount->fetch();
     //start_session();
     //$_SESSION['cartID'] = $account['cartID'];
 
@@ -11,6 +14,10 @@
         $statement = "INSERT INTO cartDetail (cartID, productID, quantity) 
         VALUES (1, '$id', $quantity)";
         $db->exec($statement);
+
+        $query = "SELECT SUM(quantity) FROM cartDetail";
+        $itemCount = $db->query($query);
+        $itemCount = $itemCount->fetch();
     }
 ?>
 
@@ -49,7 +56,8 @@
                         <a id="accountLink" href="account.html"><image id="accountIcon" src="images/accountIcon.png"></image>Account</a>
                     </div>
                     <div id="cartBox">
-                        <a id="cartLink" href="cart.html"><image id="cartIcon" src="images/shoppingCartIcon.png"></image>Shopping Cart</a>
+                        <a id="cartLink" href="cart.php"><image id="cartIcon" src="images/shoppingCartIcon.png"></image>Shopping Cart</a>
+                        <span id="itemCount"><?php echo "(".$itemCount['SUM(quantity)'].")";?></span>
                     </div>
                 </nav>
             </header>

@@ -1,6 +1,10 @@
 <?php
     include('database.php');
 
+    $query = "SELECT SUM(quantity) FROM cartDetail";
+    $itemCount = $db->query($query);
+    $itemCount = $itemCount->fetch();
+
     if (!isset($_POST['search'])){
         $search = "";
     }
@@ -67,7 +71,8 @@
                         <a id="accountLink" href="signin.php"><image id="accountIcon" src="images/accountIcon.png"></image>Account</a>
                     </div>
                     <div id="cartBox">
-                        <a id="cartLink" href="cart.html"><image id="cartIcon" src="images/shoppingCartIcon.png"></image>Shopping Cart</a>
+                        <a id="cartLink" href="cart.php"><image id="cartIcon" src="images/shoppingCartIcon.png"></image>Shopping Cart</a>
+                        <span id="itemCount"><?php echo "(".$itemCount['SUM(quantity)'].")";?></span>
                     </div>
                 </nav>
             </header>
