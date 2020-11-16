@@ -1,4 +1,9 @@
-<html lang="en" id="homeHTML">
+<?php
+session_start();
+require('database.php');
+?>
+
+<html lang="en" id="signin">
     <head>
         <meta charset="UTF-8">
         <title>NED's Grocery</title>
@@ -27,7 +32,7 @@
                     <button id="searchButton" type=submit><i class="fa fa-search"></i></button>
                 </form>
                 <div id="accountBox">
-                    <a id="accountLink" href="signin.php"><image id="accountIcon" src="images/accountIcon.png"></image>Account</a> 
+                    <a id="accountLink" href="account.html"><image id="accountIcon" src="images/accountIcon.png"></image>Account</a>
                 </div>
                 <div id="cartBox">
                     <a id="cartLink" href="cart.html"><image id="cartIcon" src="images/shoppingCartIcon.png"></image>Shopping Cart</a>
@@ -44,29 +49,43 @@
                     <img src="images/dairy.png" alt>
                 </figure>
             </div>
-            <p id="welcome">Welcome</p>
-            <p id="welcome2">
-                Here at NED's, you get the best &ndash; for less!
-            </p>
-            <div id="container">
-                <div id="savings">
-                    <img class="tag" src="images/price-tag.png">
-                    <p class="tag2">Savings</p>
-                    <p>
-                        WEEKLY AD<br>
-                        DIGITAL COUPONS<br>
-                        ALL DEALS<br>
-                    </p>
-                </div>
-                <div id="shopOnline">
-                    <a href="search.php"><img class="tag" src="images/groceries.jpg"></a>
-                    <p class="tag2">Shop Online</p>
-                    <p>
-                        DELIVERY<br>
-                        IN-STORE PICKUP<br>
-                        CURBSIDE PICKUP<br>
-                    </p>
-                </div>
+            <h1>Sign in using your Username and Password!</h1>
+            <div id="container_signin">
+                <?php
+                    $msg = '';
+
+                    if (isset($_POST['login']) && !empty($_POST['username']) 
+                        && !empty($_POST['password'])) {
+
+                        // validate username and password
+                        $username = $_POST['username'];
+                        $password = $_POST['password'];
+                        $query = "SELECT * FROM account WHERE username = '$username' 
+                                    AND password = '$password'";
+                        $statement = $db->prepare($query);
+                        $statement->execute();
+                        $account = $statement->fetch();
+                        $statement->closeCursor();
+                        
+                        if (!empty($account)) {
+                            $_SESSION['username'] = $account['username'];
+                            $_SESSION['cartID'] = $account['cartID'];
+
+                            header("Location: home.php");
+                            exit;
+                        } else {
+                            echo 'Username or Password not Found';
+                        }
+                    }
+                ?>
+            </div>
+            <div id="container_signin_form">
+                <form id="signin-form" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+                    <h4><?php echo $msg; ?></h4>
+                    <input type="text" name="username" placeholder="username" required autofocus><br>
+                    <input type="password" placeholder="abc123" name="password" required><br>
+                    <button type="submit" name="login">Login</button>
+                </form>
             </div>
         </main>
         <script src="index.js"></script>  
