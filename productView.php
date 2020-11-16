@@ -1,40 +1,10 @@
 <?php
     include('database.php');
 
-    if (!isset($_POST['search'])){
-        $search = "";
-    }
-    else{
-        $search = $_POST['search'];
-    }
-
-    $queryHalf = "FROM Product WHERE name like '%$search%'";
-
-    $department = @$_POST['department'];
-    if ($department != 0){
-        $queryHalf .= " AND departmentID = '$department'";  
-    }
-
-    $price_range = @$_POST['price-range'];
-    if ($price_range == "<10"){
-        $queryHalf .= " AND price < 10";
-    }
-    else if ($price_range == "10-25"){
-        $queryHalf .= " AND price BETWEEN 10 AND 25";
-    }
-    else if ($price_range == "25>"){
-        $queryHalf .= " AND price > 25";
-    }
-
-    $query = "SELECT count(*) ".$queryHalf;
-    $results = $db->query($query);
-    $count = $results->fetch();
-
-    $query = "SELECT * ".$queryHalf;
-    $results = $db->query($query);
+    $id = $_GET['productid'];
 ?>
 
-<html lang="en" id="searchHTML">
+<html lang="en" id="productViewHTML">
     <head>
         <meta charset="UTF-8">
         <title>NED's Grocery</title>
@@ -43,9 +13,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="slider.css">
         <link rel="stylesheet" href="style.css">
+        <script data-require="jquery@3.1.1" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="script.js"></script>
     </head>
     <body id="searchBody">
-        <form method="POST">
+        <form method="POST" action="search.php">
             <header>
                 <nav id="searchNav">
                     <div id="mySidenav" class="sidenav">
@@ -138,42 +110,51 @@
                         </ul>
                     </form>
                 </div>
-                <div id="results">
-                    <p id="resultsCount">
-                        <?php 
-                            if ($search == ''){
-                                echo "Select items to add to your cart";
-                            }
-                            else{
-                                echo $count['count(*)']." Search Results for '".$search."'";
-                            }
-                        ?>
-                    </p>
-                    <table id="resultsTable">
-                        <form>
-                            <?php
-                            $i = 0;
-                            foreach($results as $product):
-                                if ($i % 3 == 0){
-                                    echo "<tr>";
-                                }
-                            ?>
-                                <td>
-                                    <div class="item">
-                                            <img class="itemPic" src="<?php echo $product['imgLink'];?>">
-                                            <p class="itemPrice">$<?php echo $product['price']?></p>
-                                            <p class="itemDescription"><?php echo $product['name'];?></p>
-                                            <a class="addToCart" href="productView.php?productid=<?php echo $product['productID']?>">
-                                            View Product</a>
-                                    </div>
-                                </td>
-                            <?php
-                            $i++;
-                            if ($i % 3 == 0){
-                                echo "</tr>";
-                            } endforeach;?>
-                        </form>
-                    </table>
+                <a href="search.php"><img id="back" src="images/back.png"></a>
+                <div id="productView">
+                    <?php 
+                        $query = "SELECT * FROM Product WHERE productID = $id";
+                        $result = $db->query($query);
+                        $product = $result->fetch();
+                    ?>
+                    <div id="productViewLeft">
+                        <img id="productViewPic" src="<?php echo $product['imgLink'];?>">
+                        <div id="smallerPics">
+                            <img class="smallProductViewPic" alt="Left">
+                            <img class="smallProductViewPic" alt="Right">
+                            <img class="smallProductViewPic" alt="Back">
+                        </div>
+                    </div>
+                    <div id="productViewRight">
+                        <p id="productName"><?php echo $product['name'];?></p>
+                        <p id="itemCode">UPC: 0001111060933</p>
+                        <div id="rating">
+                            <img id="starsRating" src="images/starsRating.png">
+                            <span><?php echo(rand(200, 3000));?>   ratings</span>
+                        </div>
+                        <div class="quantity buttons_added">
+                            <input type="button" value="-" id="minus" onclick="subtractItem()">
+                            <input type="text" value="1" id="quantity">
+                            <input type="button" value="+" id="plus" onclick="addItem()">
+                        </div>
+                        <p>Purchase Options</p>
+                        <div id="purchaseOptions">
+                            <input type=hidden value="<?php echo $product['price'];?>" id="originalPrice">
+                            <div class="purchaseOption" id="topPurchaseOption">
+                                <input type="radio" name="purchaseOption"><label>Pickup</label>
+                                <span id="purchasePrice1">$<?php echo $product['price'];?></span><br>
+                            </div>
+                            <div class="purchaseOption">
+                                <input type="radio" name="purchaseOption"><label>Delivery</label>
+                                <span id="purchasePrice2">$<?php echo $product['price'];?></span><br>
+                            </div>
+                            <div class="purchaseOption" id="bottomPurchaseOption">
+                                <input type="radio" name="purchaseOption"><label>Ship</label>
+                                <span id="purchasePrice3">$<?php echo $product['price'];?></span><br>
+                            </div>
+                        </div>
+                        <input id="addToCartSubmit" type="submit" value="Add To Cart">
+                    </div>
                 </div>
             </main>
         </form>

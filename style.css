@@ -7,6 +7,10 @@ html{
     height: 100%;
 }
 
+#productViewHTML{
+    min-width: 870px;
+}
+
 #homeBody{
     padding: 0;
     margin: 0;
@@ -357,6 +361,7 @@ div#slider figure {
 }
 
 .addToCart{
+    text-decoration: none;;
     margin-top: -4px;
     border: 1px solid grey;
     font-weight: bold;
@@ -369,6 +374,7 @@ div#slider figure {
     color: rgb(255, 255, 255);
     text-transform: uppercase;
     border-radius: 24px; 
+    padding: 5px 12px 5px 12px;
 }
 
 .addToCart:hover{
@@ -400,4 +406,160 @@ div#slider figure {
     margin-left: 50px;
     height: 35px;
     width: 35px;
+}
+
+#productView{
+    background-color: whitesmoke;
+    display: inline-block;
+    float: right;
+    width: 75%;
+    min-height: 60%;
+    margin-right: 23px;
+    margin-top: 120px;
+    border: 2px solid black;
+}
+
+#productViewLeft{
+    display: inline-block;
+    width: 48%;
+    height: 60%;
+    text-align: center;
+}
+
+#productViewRight{
+    display: inline-block;
+    width: 50%;
+    height: 60%;
+    float: right;
+    text-align: center;
+    margin-right: 13px;
+    background-color: whitesmoke;
+}
+
+#productViewPic{
+    border: 1px solid gray;
+    width: 295px;
+    height: 250px;
+    margin-top: 15px;
+}
+
+#productName{
+    text-align: left;
+    font-size: 40px;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+#itemCode{
+    text-align: left;
+    margin-left: 15px;
+    margin-top: -36px;
+}
+
+#rating{
+    text-align: left;
+    margin-left: 15px;
+    margin-top: -10px;
+}
+
+#starsRating{
+    vertical-align: top;
+    height: 20px;
+    width: 100px;
+}
+
+#purchaseOptions{
+    margin-top: -12px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.purchaseOption{
+    padding-top: 10px;
+    text-align: left;
+    height: 32px;
+    border-top: 1px solid grey;
+}
+
+#topPurchaseOption:hover{
+    cursor: pointer;
+    background-color: rgb(212, 211, 211);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#bottomPurchaseOption:hover{
+    cursor: pointer;
+    background-color: rgb(212, 211, 211);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.purchaseOption:hover{
+    cursor: pointer;
+    background-color: rgb(212, 211, 211);
+}
+
+#topPurchaseOption{
+    border-top: none;
+}
+
+.purchaseOption input{
+    margin-left: 10px;
+    margin-right: 8px;
+}
+
+#purchasePrice1, #purchasePrice2, #purchasePrice3{
+    float: right;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+#addToCartSubmit{ 
+    text-decoration: none;;
+    margin-top: 24px;
+    border: 1px solid grey;
+    font-weight: bold;
+    width: 250px;
+    height: 40px;
+    background: #ffab00;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 2px;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    border-radius: 24px; 
+}
+
+#addToCartSubmit:hover{
+    background: #ff7b00;
+    cursor:pointer;
+}
+
+#quantity{
+    margin-top: 16px;
+    width: 10%;
+}
+
+#smallerPics{
+    margin-left: 11px;
+}
+
+.smallProductViewPic{
+    margin-top: 30px;
+    margin-right: 10px;
+    border: 1px solid gray;
+    width: 70px;
+    height: 70px;
+    display: inline-block;
+}
+  
+#back{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    margin-top: 65px;
+    margin-left: 30px;
 }
