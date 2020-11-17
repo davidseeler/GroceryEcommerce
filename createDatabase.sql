@@ -1,4 +1,5 @@
 CREATE SCHEMA IF NOT EXISTS neds_grocery;
+
 USE neds_grocery;
 
 CREATE TABLE IF NOT EXISTS department (
@@ -30,7 +31,7 @@ CREATE TABLE IF NOT EXISTS cartDetail (
 CREATE TABLE IF NOT EXISTS account (
   username VARCHAR(20) NOT NULL PRIMARY KEY,
   password VARCHAR(20) NOT NULL,
-  cartID INT NOT NULL AUTO_INCREMENT,
+  cartID INT NOT NULL,
   creditCard INT NOT NULL,
   email VARCHAR(45) NOT NULL
 );

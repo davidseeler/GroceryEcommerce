@@ -258,6 +258,8 @@ div#slider figure {
     display: inline-block;
     width: 20%;
     height: 35%;
+    max-height: 275px;
+    max-width: 250px;
     text-align: center;
     background-image: linear-gradient(white -100%, #ffce6c 200%);
     border-radius: 10px;
@@ -266,6 +268,8 @@ div#slider figure {
 }
 
 #shopOnline{
+    max-height: 275px;
+    max-width: 250px;
     display: inline-block;
     border: 2px solid black;
     width: 20%;
@@ -423,9 +427,11 @@ div#slider figure {
     margin-right: 33px;
     margin-top: 120px;
     border: 2px solid black;
+    vertical-align: middle;
 }
 
 #productViewLeft{
+    vertical-align: middle;
     display: inline-block;
     width: 48%;
     height: 60%;

@@ -23,6 +23,8 @@
         $query = "SELECT SUM(quantity) FROM cartDetail WHERE cartID = '$cartID'";
         $itemCount = $db->query($query);
         $itemCount = $itemCount->fetch();
+
+        header("Location: search.php");
     }
 ?>
 
@@ -39,7 +41,7 @@
         <script src="script.js"></script>
     </head>
     <body id="searchBody">
-        <form method="POST" action="search.php">
+        <form method="POST">
             <header>
                 <nav id="searchNav">
                     <div id="mySidenav" class="sidenav">
