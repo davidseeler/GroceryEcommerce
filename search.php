@@ -183,7 +183,7 @@
                             <?php
                             $i = 0;
                             foreach($results as $product):
-                                if ($i % 3 == 0){
+                                if ($i % 4 == 0){
                                     echo "<tr>";
                                 }
                             ?>
@@ -198,7 +198,7 @@
                                 </td>
                             <?php
                             $i++;
-                            if ($i % 3 == 0){
+                            if ($i % 4 == 0){
                                 echo "</tr>";
                             } endforeach;?>
                         </form>
