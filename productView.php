@@ -58,7 +58,16 @@
                         <button id="searchButton" type=submit><i class="fa fa-search"></i></button>
                     </div>
                     <div id="accountBox">
-                        <a id="accountLink" href="account.php"><image id="accountIcon" src="images/accountIcon.png"></image>Account</a>
+                        <a id="accountLink" href="account.php"><image id="accountIcon" src="images/accountIcon.png"></image>
+                            <?php
+                                if (isset($_SESSION['username'])){
+                                    echo $_SESSION['username'];
+                                }
+                                else{
+                                    echo "Account";
+                                }
+                            ?>
+                        </a> 
                     </div>
                     <div id="cartBox">
                         <a id="cartLink" href="cart.php"><image id="cartIcon" src="images/shoppingCartIcon.png"></image>Shopping Cart</a>
