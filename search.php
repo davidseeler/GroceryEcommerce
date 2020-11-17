@@ -58,12 +58,11 @@
                 <nav id="searchNav">
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <p>Categories</p>
-                        <a href="#">Fruit</a>
-                        <a href="#">Vegetables</a>
-                        <a href="#">Meat</a>
-                        <a href="#">Seafood</a>
-                        <a href="#">Dairy and Eggs</a>
+                        <a href="account.php">Account</a>
+                        <a href="search.php">Search</a>
+                        <a href="search.php">Department</a>
+                        <a href="checkout.php">Checkout</a>
+                        <a href="#">Contact</a>
                     </div>
                     <span id="menuButton" onclick="openNav()">&#9776;</span>
                     <a href="home.php"><img id="logo" src="images/logo.png"></a>

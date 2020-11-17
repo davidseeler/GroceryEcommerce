@@ -19,18 +19,17 @@
         <link rel="stylesheet" href="slider.css">
         <link rel="stylesheet" href="style.css">
     </head>
-    <body id="homeBody">
+    <body id="homeBodyMain">
         <form method="POST" action="search.php">
             <header>
                 <nav id="homeNav">
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <p>Categories</p>
-                        <a href="#">Fruit</a>
-                        <a href="#">Vegetables</a>
-                        <a href="#">Meat</a>
-                        <a href="#">Seafood</a>
-                        <a href="#">Dairy and Eggs</a>
+                        <a href="account.php">Account</a>
+                        <a href="search.php">Search</a>
+                        <a href="search.php">Department</a>
+                        <a href="checkout.php">Checkout</a>
+                        <a href="#">Contact</a>
                     </div>
                     <span id="menuButton" onclick="openNav()">&#9776;</span>
                     <a href="home.php"><img id="logo" src="images/logo.png"></a>
@@ -79,29 +78,64 @@
                     <img src="images/dairy.png" alt>
                 </figure>
             </div>
-            <p id="welcome">Welcome</p>
+            <p id="welcome">
+                <?php
+                    if (isset($_SESSION['username'])){
+                        echo "Welcome, ".$_SESSION['username'];
+                    }
+                    else{
+                        echo "Welcome";
+                    }
+                ?>
+            </p>
             <p id="welcome2">
                 Here at NED's, you get the best &ndash; for less!
             </p>
             <div id="container">
-                <div id="savings">
-                    <img class="tag" src="images/price-tag.png">
-                    <p class="tag2">Savings</p>
-                    <p>
-                        WEEKLY AD<br>
-                        DIGITAL COUPONS<br>
-                        ALL DEALS<br>
-                    </p>
-                </div>
-                <div id="shopOnline">
-                    <a href="search.php"><img class="tag" src="images/groceries.jpg"></a>
-                    <p class="tag2">Shop Online</p>
-                    <p>
-                        DELIVERY<br>
-                        IN-STORE PICKUP<br>
-                        CURBSIDE PICKUP<br>
-                    </p>
-                </div>
+                <a href="search.php" class="homeLink">
+                    <div id="savings">
+                        <img class="tag" src="images/saleTag.png">
+                        <p class="tag2">Savings</p>
+                        <p>
+                            WEEKLY AD<br>
+                            DIGITAL COUPONS<br>
+                            ALL DEALS<br>
+                        </p>
+                    </div>
+                </a>
+                <a href="search.php" class="homeLink">
+                    <div id="savings">
+                        <img class="tag" src="images/turkey.png">
+                        <p class="tag2">Holiday</p>
+                        <p>
+                            BUNDLES<br>
+                            SPECIALTY ITEMS<br>
+                            HOLIDAY DEALS<br>
+                        </p>
+                    </div>
+                </a>
+                <a href="search.php" class="homeLink">
+                    <div id="shopOnline">
+                        <img class="tag" src="images/sprout.jpg">
+                        <p class="tag2">Organic</p>
+                        <p>
+                            ALL NATURAL<br>
+                            LOCAL FARMS<br>
+                            HEALTH<br>
+                        </p>
+                    </div>
+                </a>
+                <a href="search.php" class="homeLink">
+                    <div id="shopOnline">
+                        <img class="tag" src="images/groceries.png">
+                        <p class="tag2">Shop Online</p>
+                        <p>
+                            DELIVERY<br>
+                            IN-STORE PICKUP<br>
+                            CURBSIDE PICKUP<br>
+                        </p>
+                    </div>
+                </a>
             </div>
         </main>
         <script src="index.js"></script>  
