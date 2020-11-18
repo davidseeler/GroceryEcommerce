@@ -148,21 +148,21 @@
                             <li>
                                 <label>Shipping Address:</label>
                                 <span class="error">*</span><br>
-                                <input class="registerField" name="firstName" type="text" placeholder="First Name">
+                                <input class="registerField" name="firstName" type="text" placeholder="First Name"><br>
                                 <input class="registerField" name="lastName" type="text" placeholder="Last Name"><br>
                                 <input class="registerField" name="address1" type="text" placeholder="Address 1"><br>
                                 <input class="registerField" name="address2" type="text" placeholder="Address 2"><br>
                                 <input class="registerField" name="country" type="text" placeholder="Country / Region"><br>
-                                <input class="registerField" name="zipcode" type="text" placeholder="Zipcode">
-                                <input class="registerField" name="city" type="text" placeholder="City">
+                                <input class="registerField" name="zipcode" type="text" placeholder="Zipcode"><br>
+                                <input class="registerField" name="city" type="text" placeholder="City"><br>
                                 <input class="registerField" name="state" type="text" placeholder="State"><br>
-                                <label>Same as billing address?</label>
-                                <input name="sameAddress" type="checkbox">
+                                <label id="sameAddressLabel">Same as billing address?</label>
+                                <input id="sameAddressBox" name="sameAddress" type="checkbox">
                             </li>
                         </ul>
                     </div>
                     </ul>
-                    <input type="submit">
+                    <input id="registerSubmit" type="submit">
                 </form>
             </div>
         </main>
