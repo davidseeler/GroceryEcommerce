@@ -15,26 +15,26 @@
         $cartID = rand(1000, 9999); // check for duplicates
 
         // Username Validation
-        if (!preg_match("/^[a-zA-Z-' ]*$/",$username)) {
-            $usernameErr = "Only letters and white space allowed. ";
+        if (!preg_match("/^[a-zA-Z0-9]*$/",$username)) {
+            $usernameErr = "Only alphanumeric characters allowed.";
         }
 
         // Password Validation
         if (strcmp($password, $confirmation) !== 0) {
             $confirmationErr = "Passwords must match. ";
         }
-        if (!preg_match("/^[a-zA-Z-' ]*$/",$password)) {
-            $passwordErr = "Only letters and white space allowed. ";
+        if (!preg_match("/^[a-zA-Z0-9]*$/",$password)) {
+            $passwordErr = "Only alphanumeric characters allowed.";
         }
 
         // Email Validation
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $emailErr = "Invalid email format. ";
+            $emailErr = "Invalid email format.";
         }
 
         // Credit-Card Validation
         if (!preg_match('/^[0-9]+$/', $creditcard)) {
-            $creditCardErr = "Only numbers allowed. ";
+            $creditCardErr = "Only numbers allowed.";
         }
 
         // If no errors then account is created
@@ -114,7 +114,7 @@
         <main id="homeMain">
             <form method="POST">
                 <p><span class="error">* All Fields Required</span></p>
-                <ul> <!-- validate data first and put text restrictions on input-->
+                <ul id="registrationList"> <!-- validate data first and put text restrictions on input-->
                     <li>
                         <label>Username: </label>
                         <input name="username" type="text" value="<?php echo $username;?>" required>
@@ -122,12 +122,12 @@
                     </li>
                     <li>
                         <label>Password: </label>
-                        <input name="password" type="text" value="<?php echo $password;?>" required>
+                        <input name="password" type="password" value="<?php echo $password;?>" required>
                         <span class="error">* <?php echo $passwordErr;?></span>
                     </li>
                     <li>
                         <label>Password Confirmation: </label>
-                        <input name="passwordConfirmation" type="text" value="<?php echo $confirmation;?>" required>
+                        <input name="passwordConfirmation" type="password" value="<?php echo $confirmation;?>" required>
                         <span class="error">* <?php echo $confirmationErr;?></span>
                     </li>
                     <li>
@@ -139,6 +139,25 @@
                         <label>Email:</label>
                         <input name="email" type="text" value="<?php echo $email;?>" required>
                         <span class="error">* <?php echo $emailErr;?></span>
+                    </li>
+                    <li>
+                        <label>Phone:</label>
+                        <input name="phone" type="text" required>
+                        <span class="error">*</span>
+                    </li>
+                    <li>
+                        <label>Shipping Address:</label>
+                        <span class="error">*</span><br>
+                        <input name="firstName" type="text" placeholder="First Name">
+                        <input name="lastName" type="text" placeholder="Last Name"><br>
+                        <input name="address1" type="text" placeholder="Address 1"><br>
+                        <input name="address2" type="text" placeholder="Address 2"><br>
+                        <input name="country" type="text" placeholder="Country / Region"><br>
+                        <input name="zipcode" type="text" placeholder="Zipcode">
+                        <input name="city" type="text" placeholder="City">
+                        <input name="state" type="text" placeholder="State"><br>
+                        <label>Same as billing address?</label>
+                        <input name="sameAddress" type="checkbox">
                     </li>
                 </ul>
                 <input type="submit">

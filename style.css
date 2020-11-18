@@ -684,3 +684,7 @@ div#slider figure {
     background: #ff7b00;
     cursor:pointer;
 }
+
+#registrationList{
+    list-style: none;
+}
