@@ -14,11 +14,40 @@
     }
     else{
         $search = $_POST['search'];
+        $searchTerm = $search;
+    }
+
+    switch($search){
+        case "fruit":
+            $search = "";
+            $department = 1;
+        break;
+        case "vegetables":
+            $search = "";
+            $department = 2;
+        break;
+        
+        case "meat":
+            $search = "";
+            $department = 3;
+        break;
+
+        case "seafood":
+            $search = "";
+            $department = 4;
+        break;
+
+        case "dairy":
+            $search = "";
+            $department = 5;
+        break;
+
+        default:
+        $department = @$_POST['department'];
     }
 
     $queryHalf = "FROM products WHERE name like '%$search%'";
 
-    $department = @$_POST['department'];
     if ($department != 0){
         $queryHalf .= " AND departmentID = '$department'";  
     }
@@ -170,11 +199,11 @@
                 <div id="results">
                     <p id="resultsCount">
                         <?php 
-                            if ($search == ''){
+                            if ($searchTerm == ''){
                                 echo "Select items to add to your cart";
                             }
                             else{
-                                echo $count['count(*)']." Search Results for '".$search."'";
+                                echo $count['count(*)']." Search Results for '".$searchTerm."'";
                             }
                         ?>
                     </p>

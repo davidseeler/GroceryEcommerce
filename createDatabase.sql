@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS account (
   username VARCHAR(20) NOT NULL PRIMARY KEY,
   password VARCHAR(20) NOT NULL,
   cartID INT NOT NULL,
-  creditCard INT NOT NULL,
+  creditCard VARCHAR(16) NOT NULL,
   email VARCHAR(45) NOT NULL
 );
 
