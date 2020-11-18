@@ -24,6 +24,7 @@
 
     $email = $account['email'];
     $credit_card = $account['creditCard'];
+    $credit_card = "********".substr($credit_card, -4);
 ?>
 
 <html lang="en" id="homeHTML">
