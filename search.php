@@ -14,8 +14,9 @@
     }
     else{
         $search = $_POST['search'];
-        $searchTerm = $search;
     }
+
+    $searchTerm = $search;
 
     switch($search){
         case "fruit":
