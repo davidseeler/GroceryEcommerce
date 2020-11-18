@@ -2,24 +2,62 @@
     include('database.php');
     session_start();
 
+    $username = $password = $confirmation = $creditcard = $email = "";
+    $usernameErr = $passwordErr = $confirmationErr = $creditCardErr = $emailErr = "";
+
     // Insert values into database once submit is entered
     if (isset($_POST['username'])){
         $username = $_POST['username'];
         $password = $_POST['password'];
+        $confirmation = $_POST['passwordConfirmation'];
         $creditcard = $_POST['credit-card'];
         $email = $_POST['email'];
         $cartID = rand(1000, 9999); // check for duplicates
 
-        $statement = "INSERT INTO account (username, password, cartID, creditCard, email)
-        VALUES ('$username', $password, $cartID, $creditcard, '$email')";
-        $db->exec($statement);
+        // Username Validation
+        if (!preg_match("/^[a-zA-Z-' ]*$/",$username)) {
+            $usernameErr = "Only letters and white space allowed. ";
+        }
 
-        // Create session variables
-        $_SESSION['username'] = $username;
-        $_SESSION['cartID'] = $cartID; 
+        // Password Validation
+        if (strcmp($password, $confirmation) !== 0) {
+            $confirmationErr = "Passwords must match. ";
+        }
+        if (!preg_match("/^[a-zA-Z-' ]*$/",$password)) {
+            $passwordErr = "Only letters and white space allowed. ";
+        }
 
-        // Redirect to account details page
-        header("Location: account.php");
+        // Email Validation
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "Invalid email format. ";
+        }
+
+        // Credit-Card Validation
+        if (!preg_match('/^[0-9]+$/', $creditcard)) {
+            $creditCardErr = "Only numbers allowed. ";
+        }
+
+        // If no errors then account is created
+        if (!empty($usernameErr) || !empty($confirmationErr) || !empty($passwordErr) || !empty($emailErr) || !empty($creditCardErr)) {
+
+            $_POST['username'] = NULL;
+            $_POST['password'] = NULL;
+            $_POST['passwordConfirmation'] = NULL;
+            $_POST['credit-card'] = NULL;
+            $_POST['email'] = NULL;
+        } else {
+
+            $statement = "INSERT INTO account (username, password, cartID, creditCard, email)
+            VALUES ('$username', '$password', $cartID, $creditcard, '$email')";
+            $db->exec($statement);
+
+            // Create session variables
+            $_SESSION['username'] = $username;
+            $_SESSION['cartID'] = $cartID; 
+
+            // Redirect to account details page
+            header("Location: account.php");
+        }
     }
 ?>
 
@@ -75,26 +113,32 @@
         </form>
         <main id="homeMain">
             <form method="POST">
+                <p><span class="error">* All Fields Required</span></p>
                 <ul> <!-- validate data first and put text restrictions on input-->
                     <li>
                         <label>Username: </label>
-                        <input name="username" type="text">
+                        <input name="username" type="text" value="<?php echo $username;?>" required>
+                        <span class="error">* <?php echo $usernameErr;?></span>
                     </li>
                     <li>
                         <label>Password: </label>
-                        <input name="password" type="text">
+                        <input name="password" type="text" value="<?php echo $password;?>" required>
+                        <span class="error">* <?php echo $passwordErr;?></span>
                     </li>
                     <li>
                         <label>Password Confirmation: </label>
-                        <input name="passwordConfirmation" type="text">
+                        <input name="passwordConfirmation" type="text" value="<?php echo $confirmation;?>" required>
+                        <span class="error">* <?php echo $confirmationErr;?></span>
                     </li>
                     <li>
                         <label>Credit Card:</label>
-                        <input name="credit-card" type="text">
+                        <input name="credit-card" type="text" value="<?php echo $creditcard;?>" required>
+                        <span class="error">* <?php echo $creditCardErr;?></span>
                     </li>
                     <li>
                         <label>Email:</label>
-                        <input name="email" type="text">
+                        <input name="email" type="text" value="<?php echo $email;?>" required>
+                        <span class="error">* <?php echo $emailErr;?></span>
                     </li>
                 </ul>
                 <input type="submit">

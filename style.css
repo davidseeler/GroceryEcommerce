@@ -34,6 +34,8 @@ html{
     font-family: "Avenir Next", "Avenir", sans-serif;
 }
 
+.error {color: #FF0000;}
+
 #searchMain{
     height: 100%;
 }
