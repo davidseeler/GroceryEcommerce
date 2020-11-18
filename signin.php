@@ -78,11 +78,11 @@ require('database.php');
                             header("Location: home.php");
                             exit;
                         } else {
-                            echo 'Username or Password not Found';
+                            $msg = 'Username or Password not Found';
                         }
                     }
                 ?>
-                <img id="signinImg" src="images/logo.png">
+                <img id="signinImg" src="images/logo.png"><br>
                 <h3 id="signinSubtitle">NED's Single Sign-On Service</h3>
                 <form id="signin-form" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                     <h4><?php echo $msg; ?></h4>

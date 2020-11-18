@@ -112,56 +112,59 @@
             </header>
         </form>
         <main id="homeMain">
-            <form method="POST">
-                <p><span class="error">* All Fields Required</span></p>
-                <ul id="registrationList"> <!-- validate data first and put text restrictions on input-->
-                    <li>
-                        <label>Username: </label>
-                        <input name="username" type="text" value="<?php echo $username;?>" required>
-                        <span class="error">* <?php echo $usernameErr;?></span>
-                    </li>
-                    <li>
-                        <label>Password: </label>
-                        <input name="password" type="password" value="<?php echo $password;?>" required>
-                        <span class="error">* <?php echo $passwordErr;?></span>
-                    </li>
-                    <li>
-                        <label>Password Confirmation: </label>
-                        <input name="passwordConfirmation" type="password" value="<?php echo $confirmation;?>" required>
-                        <span class="error">* <?php echo $confirmationErr;?></span>
-                    </li>
-                    <li>
-                        <label>Credit Card:</label>
-                        <input name="credit-card" type="text" value="<?php echo $creditcard;?>" required>
-                        <span class="error">* <?php echo $creditCardErr;?></span>
-                    </li>
-                    <li>
-                        <label>Email:</label>
-                        <input name="email" type="text" value="<?php echo $email;?>" required>
-                        <span class="error">* <?php echo $emailErr;?></span>
-                    </li>
-                    <li>
-                        <label>Phone:</label>
-                        <input name="phone" type="text" required>
-                        <span class="error">*</span>
-                    </li>
-                    <li>
-                        <label>Shipping Address:</label>
-                        <span class="error">*</span><br>
-                        <input name="firstName" type="text" placeholder="First Name">
-                        <input name="lastName" type="text" placeholder="Last Name"><br>
-                        <input name="address1" type="text" placeholder="Address 1"><br>
-                        <input name="address2" type="text" placeholder="Address 2"><br>
-                        <input name="country" type="text" placeholder="Country / Region"><br>
-                        <input name="zipcode" type="text" placeholder="Zipcode">
-                        <input name="city" type="text" placeholder="City">
-                        <input name="state" type="text" placeholder="State"><br>
-                        <label>Same as billing address?</label>
-                        <input name="sameAddress" type="checkbox">
-                    </li>
-                </ul>
-                <input type="submit">
-            </form>
+            <div id="container_register">
+                <img id="registerImg" src="images/logo.png">
+                <form method="POST">
+                    <p><span class="error">* All Fields Required</span></p>
+                    <div id="LeftRegister">
+                        <ul id="registrationList"> <!-- validate data first and put text restrictions on input-->
+                            <li>
+                                <label>Username: <span class="error">* <?php echo $usernameErr;?></span></label><br>
+                                <input class="registerField" name="username" type="text" value="<?php echo $username;?>" required><br>
+                            </li>
+                            <li>
+                                <label>Password: <span class="error">* <?php echo $passwordErr;?></span></label><br>
+                                <input class="registerField" name="password" type="password" value="<?php echo $password;?>" required><br>
+                            </li>
+                            <li>
+                                <label>Password Confirmation: <span class="error">* <?php echo $confirmationErr;?></span></label><br>
+                                <input class="registerField" name="passwordConfirmation" type="password" value="<?php echo $confirmation;?>" required><br>
+                            </li>
+                            <li>
+                                <label>Credit Card: <span class="error">* <?php echo $creditCardErr;?></span></label><br>
+                                <input class="registerField" name="credit-card" type="text" value="<?php echo $creditcard;?>" required><br>
+                            </li>
+                            <li>
+                                <label>Email: <span class="error">* <?php echo $emailErr;?></span></label><br>
+                                <input class="registerField" name="email" type="text" value="<?php echo $email;?>" required><br>
+                            </li>
+                            <li>
+                                <label>Phone: <span class="error">*</span></label><br>
+                                <input class="registerField" name="phone" type="text" required><br>
+                            </li>
+                    </div>    
+                    <div id="rightRegister">
+                        <ul id="rightRegisterList">
+                            <li>
+                                <label>Shipping Address:</label>
+                                <span class="error">*</span><br>
+                                <input class="registerField" name="firstName" type="text" placeholder="First Name">
+                                <input class="registerField" name="lastName" type="text" placeholder="Last Name"><br>
+                                <input class="registerField" name="address1" type="text" placeholder="Address 1"><br>
+                                <input class="registerField" name="address2" type="text" placeholder="Address 2"><br>
+                                <input class="registerField" name="country" type="text" placeholder="Country / Region"><br>
+                                <input class="registerField" name="zipcode" type="text" placeholder="Zipcode">
+                                <input class="registerField" name="city" type="text" placeholder="City">
+                                <input class="registerField" name="state" type="text" placeholder="State"><br>
+                                <label>Same as billing address?</label>
+                                <input name="sameAddress" type="checkbox">
+                            </li>
+                        </ul>
+                    </div>
+                    </ul>
+                    <input type="submit">
+                </form>
+            </div>
         </main>
         <script src="index.js"></script>  
     </body>
