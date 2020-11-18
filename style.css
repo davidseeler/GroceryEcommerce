@@ -713,14 +713,14 @@ div#slider figure {
 }
 
 #leftRegister{
-    margin-top: -20px;
+    margin-top: -25px;
     display: inline-block;
     width: 45%;
     height: 70%;
 }
 
 #rightRegister{
-    margin-top: -20px;
+    margin-top: -25px;
     display: inline-block;
     width: 45%;
     height: 70%;
@@ -741,7 +741,7 @@ div#slider figure {
 
 #registerSubmit{
     text-decoration: none;;
-    margin-top: 5px;
+    margin-top: 14px;
     border: 1px solid grey;
     font-weight: bold;
     width: 130px;
