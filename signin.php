@@ -54,16 +54,6 @@ require('database.php');
             </header>
         </form>
         <main id="homeMain">
-            <div id="slider">
-                <figure>
-                    <img src="images/vegetables.png" alt>
-                    <img src="images/fruit.png" alt>
-                    <img src="images/meat.png" alt>
-                    <img src="images/seafood.png" alt>
-                    <img src="images/dairy.png" alt>
-                </figure>
-            </div>
-            <h1>Sign in using your Username and Password!</h1>
             <div id="container_signin">
                 <?php
                     $msg = '';
@@ -92,17 +82,19 @@ require('database.php');
                         }
                     }
                 ?>
-            </div>
-            <div id="container_signin_form">
+                <img id="signinImg" src="images/logo.png">
+                <h3 id="signinSubtitle">NED's Single Sign-On Service</h3>
                 <form id="signin-form" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                     <h4><?php echo $msg; ?></h4>
-                    <input type="text" name="username" placeholder="username" required autofocus><br>
-                    <input type="password" placeholder="abc123" name="password" required><br>
-                    <button type="submit" name="login">Login</button>
+                    <label class="signinLabel">Username:</label><br>
+                    <input class="signinField" type="text" name="username" placeholder="username" required autofocus><br>
+                    <label class="siginLabel">Password:</label><br>
+                    <input class="signinField" type="password" placeholder="abc123" name="password" required><br>
+                    <button id="signinButton" type="submit" name="login">Login</button>
                 </form>
+                <p>Don't have an account?</p>
+                <a href="register.php">Sign Up</a>
             </div>
-            <p>Don't have an account?</p>
-            <a href="register.php">Sign Up</a>
         </main>
         <script src="index.js"></script>  
     </body>

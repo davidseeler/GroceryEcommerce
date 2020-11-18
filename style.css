@@ -281,7 +281,7 @@ div#slider figure {
 }
 
 .tag{
-    margin-top: 5px;
+    margin-top: 10px;
     border-radius: 50%;
     height: 80px;
     weight: 80px;
@@ -594,4 +594,91 @@ div#slider figure {
     display: inline-block;
     color: black;
     font-weight: bold;
+}
+
+#accountContainer{
+    background-color: whitesmoke;
+    border: 2px solid black;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    text-align: center;
+    border-radius: 10px;
+}
+
+#accountPageIcon{
+    width: 125px;
+    height: 125px;
+    margin-bottom: -5px;
+}
+
+#signoutButton{
+    background-color: white;
+    border-radius: 10px;
+    width: 100px;
+    height: 25px;
+    margin-bottom: 5px;
+    margin-top: -10px;
+}
+
+#signoutButton:hover{
+    cursor: pointer;
+    background-color: rgb(189, 186, 186);
+}
+
+#accountUsername{
+    margin-bottom: -5px;
+}
+
+#container_signin{
+    background-color: whitesmoke;
+    border: 2px solid black;
+    width: 25%;
+    height: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 2.5%;
+    border-radius: 10px;
+}
+
+#signinImg{
+    margin-top: 20px;
+    width: 140px;
+    height: 50px;
+}
+
+#signinSubtitle{
+    margin-top: 4px;
+    color: rgb(58, 58, 58);
+}
+
+.signinField{
+    width: 60%;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+#signinButton{
+    text-decoration: none;;
+    margin-top: 12px;
+    border: 1px solid grey;
+    font-weight: bold;
+    width: 130px;
+    height: 30px;
+    background: #ffab00;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 2px;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    border-radius: 24px; 
+    padding: 5px 12px 5px 12px;
+    margin-bottom: 30px;
+}
+
+#signinButton:hover{
+    background: #ff7b00;
+    cursor:pointer;
 }

@@ -8,8 +8,6 @@
     $query = "SELECT SUM(quantity) FROM cartDetail WHERE cartID='$cartID'";
     $itemCount = $db->query($query);
     $itemCount = $itemCount->fetch();
-    //start_session();
-    //$_SESSION['cartID'] = $account['cartID'];
 ?>
 
 <html lang="en" id="homeHTML">
@@ -72,7 +70,7 @@
             </header>
         </form>
         <main>
-            <!--start here-->
+            <!------------------START SHOPPINIG CART CODE HERE------------------->
         </main>
         <script src="index.js"></script>  
     </body>

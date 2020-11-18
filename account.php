@@ -12,10 +12,18 @@
     }
 
     $cartID = @$_SESSION['cartID'];
+    $username = @$_SESSION['username'];
 
     $query = "SELECT SUM(quantity) FROM cartDetail WHERE cartID='$cartID'";
     $itemCount = $db->query($query);
     $itemCount = $itemCount->fetch();
+
+    $query = "SELECT * FROM account WHERE username='$username'";
+    $account = $db->query($query);
+    $account = $account->fetch();
+
+    $email = $account['email'];
+    $credit_card = $account['creditCard'];
 ?>
 
 <html lang="en" id="homeHTML">
@@ -78,13 +86,20 @@
             </header>
         </form>
         <main id="homeMain">
-            <h1>account details</h2>
-            <p>Username: <?php echo $_SESSION['username'];?></p> 
-            <p>CartID: <?php echo $_SESSION['cartID'];?></p> 
-            <form method="POST">
-                <input name="signout" type="hidden">
-                <input type="submit" value="Sign Out">
-            </form>
+            <div id="accountContainer">
+                <img id="accountPageIcon" src="images/accountIcon.png">
+                <h2 id="accountUsername"><?php echo $_SESSION['username'];?></h2> 
+                <p>Email: <?php echo $email;?></p>
+                <p>Credit Card: <?php echo $credit_card?></p>
+                <a href="cart.php">Shopping Cart</p>
+                <a href="#">Browsing History</p>
+                <a href="#">Order History</p>
+                <br>
+                <form method="POST">
+                    <input name="signout" type="hidden">
+                    <input id="signoutButton" type="submit" value="Sign Out">
+                </form>
+            </div>
         </main>
         <script src="index.js"></script>  
     </body>
