@@ -8,6 +8,9 @@
     $query = "SELECT SUM(quantity) FROM cartDetail WHERE cartID='$cartID'";
     $itemCount = $db->query($query);
     $itemCount = $itemCount->fetch();
+
+    $query = "SELECT * from cartDetail WHERE cartID='$cartID'";
+    $cartItems = $db->query($query);
 ?>
 
 <html lang="en" id="homeHTML">
@@ -70,11 +73,83 @@
             </header>
         </form>
         <main>
-            <!------------------START SHOPPINIG CART CODE HERE------------------->
+            <div id="cartContainer">
+                <div id="cartLeft">
+                    <p id="shoppingCartTitle">Shopping Cart</p>
+                    <table id="resultsTable">
+                        <form>
+                            <?php
+                            $products = array();
+                            $quantities = array();
+                            $i = 0;
+                            foreach($cartItems as $item):
+                                if (empty($cartItems)){
+                                    echo "<p>empty</p>";
+                                }
+                                else{
+                                    
+                                }
+                                if ($i % 4 == 0){
+                                    echo "<tr>";
+                                }
+                                $quantity = $item['quantity'];
+                                $productID = $item['productID'];
+                                $query = "SELECT * FROM products WHERE productID='$productID'";
+                                $product = $db->query($query);
+                                $product = $product->fetch();
+                            ?>
+                                <td>
+                                    <div class="cartItem">
+                                            <img class="cartItemPic" src="<?php echo $product['imgLink'];?>">
+                                            <p class="itemPrice">$<?php echo $product['price'] * $quantity?></p>
+                                            <p class="itemDescription">
+                                                <span class="individualQuantity"><?php echo "x".$quantity." ";?></span>
+                                                <?php echo $product['name'];?>
+                                            </p>
+                                    </div>
+                                </td>
+                            <?php
+                            $products[] = $product['name'];
+                            $quantities[] = $quantity;
+                            $prices[] = $product['price'] * $quantity;
+                            $i++;
+                            if ($i % 4 == 0){
+                                echo "</tr>";
+                            } endforeach;?>
+                        </form>
+                    </table>
+                </div>
+                <div id="cartRight">
+                    <h1>Subtotal</h1>
+                    <ul id="cartList">
+                        <?php
+                            $subtotal = 0;
+                            $x = 0;
+                            foreach ($products as $grocery):
+                        ?>
+                        <li>
+                            <p class="subtotalItem">
+                                <?php echo "x".$quantities[$x]." ".$products[$x];?>
+                                <span class="subtotalPrice">
+                                    <?php 
+                                        echo "$".$prices[$x]; 
+                                        $subtotal += $prices[$x]; 
+                                        $x++;
+                                    ?>
+                                </span>
+                            </p>
+                            <?php endforeach;?>
+                        </li>
+                    </ul>
+                    <p>__________________________________</p>
+                    <h2 id="subtotalNum"><?php echo "$".$subtotal;?></h2>
+                    <a id="checkoutButton" href="checkout.php">CHECKOUT</a>
+                </div>
+            </div>
         </main>
         <script src="index.js"></script>  
     </body>
-    <footer id="homeFooter">
+    <footer id="searchFooter">
         <p>&copy; 2020 NED's Grocery</p>
     </footer>
 </html>

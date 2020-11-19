@@ -373,7 +373,7 @@ div#slider figure {
 }
 
 .addToCart{
-    text-decoration: none;;
+    text-decoration: none;
     margin-top: -4px;
     border: 1px solid grey;
     font-weight: bold;
@@ -532,7 +532,7 @@ div#slider figure {
 }
 
 #addToCartSubmit{ 
-    text-decoration: none;;
+    text-decoration: none;
     margin-top: 24px;
     border: 1px solid grey;
     font-weight: bold;
@@ -663,7 +663,7 @@ div#slider figure {
 }
 
 #signinButton{
-    text-decoration: none;;
+    text-decoration: none;
     margin-top: 12px;
     border: 1px solid grey;
     font-weight: bold;
@@ -740,7 +740,11 @@ div#slider figure {
 }
 
 #registerSubmit{
+<<<<<<< HEAD
+    text-decoration: none;
+=======
     text-decoration: none;;
+>>>>>>> 9dc5a4130ee0d18c3483e6a3dfa425134e06e2f4
     margin-top: 14px;
     border: 1px solid grey;
     font-weight: bold;
@@ -766,6 +770,90 @@ div#slider figure {
 }
 
 #sameAddressBox{
-    
     margin-top: -2px;
+}
+
+#cartContainer{
+    margin-top: -16px;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#cartLeft{
+    border-right: 2px solid black;
+    width: 70%;
+    height: 100%;
+    display: inline-block;
+    padding-left: 15px;
+}
+
+#cartRight{
+    background-color: whitesmoke;
+    width: 28.65%;
+    height: 100%;
+    display: inline-block;
+    float: right;
+    text-align: center;
+}
+
+#shoppingCartTitle{
+    text-align: left;
+    font-size: 35px;
+    margin-left: 15px;
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+
+.cartItem{
+    background-color: white;
+    height: 170px;
+    width: 184px;
+    border: 5px solid rgb(231, 230, 230);
+    text-align: center;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.cartItemPic{
+    margin-top: 12px;
+    height: 75px;
+    width: 75px;
+}
+
+#cartList{
+    list-style: none;
+    text-align: left;
+    margin-left: 5px;
+}
+
+.subtotalPrice{
+    float: right;
+    margin-right: 40px;
+}
+
+#subtotalNum{
+    margin-bottom: 50px;
+}
+
+#checkoutButton{
+    text-decoration: none;
+    border: 1px solid grey;
+    font-weight: bold;
+    background: #ffab00;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: 2px;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    border-radius: 24px; 
+    padding: 8px 12px 8px 12px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#checkoutButton:hover{
+    background: #ff7b00;
+    cursor:pointer;
 }
