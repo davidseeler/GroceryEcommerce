@@ -16,8 +16,20 @@
         }
 
         $quantity = $_POST['quantity'];
-        $statement = "INSERT INTO cartDetail (cartID, productID, quantity) 
-        VALUES ($cartID, '$id', $quantity)";
+        
+        $query = "SELECT * FROM cartDetail WHERE productID='$id'";
+        $productTest = $db->query($query);
+        $productTest = $productTest->fetch();
+
+        if (empty($productTest)){
+            $statement = "INSERT INTO cartDetail (cartID, productID, quantity) 
+            VALUES ($cartID, '$id', $quantity)";
+        }
+        else{
+            $statement = "UPDATE cartDetail SET quantity=(quantity + '$quantity') WHERE productID=$id";
+        }
+        
+
         $db->exec($statement);
 
         $query = "SELECT SUM(quantity) FROM cartDetail WHERE cartID = '$cartID'";

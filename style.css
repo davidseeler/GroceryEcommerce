@@ -740,11 +740,7 @@ div#slider figure {
 }
 
 #registerSubmit{
-<<<<<<< HEAD
     text-decoration: none;
-=======
-    text-decoration: none;;
->>>>>>> 9dc5a4130ee0d18c3483e6a3dfa425134e06e2f4
     margin-top: 14px;
     border: 1px solid grey;
     font-weight: bold;
@@ -782,7 +778,6 @@ div#slider figure {
 }
 
 #cartLeft{
-    border-right: 2px solid black;
     width: 70%;
     height: 100%;
     display: inline-block;
@@ -790,6 +785,7 @@ div#slider figure {
 }
 
 #cartRight{
+    border-left: 2px solid black;
     background-color: whitesmoke;
     width: 28.65%;
     height: 100%;
@@ -802,18 +798,19 @@ div#slider figure {
     text-align: left;
     font-size: 35px;
     margin-left: 15px;
-    margin-top: 10px;
-    margin-bottom: 4px;
+    margin-top: 13px;
+    margin-bottom: 10px;
 }
 
 .cartItem{
     background-color: white;
-    height: 170px;
+    height: 190px;
     width: 184px;
     border: 5px solid rgb(231, 230, 230);
     text-align: center;
     margin-left: 10px;
     margin-bottom: 10px;
+    padding-bottom: 5px;
 }
 
 .cartItemPic{
@@ -834,7 +831,7 @@ div#slider figure {
 }
 
 #subtotalNum{
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 #checkoutButton{
@@ -849,11 +846,53 @@ div#slider figure {
     text-transform: uppercase;
     border-radius: 24px; 
     padding: 8px 12px 8px 12px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 60px;
+    padding-right: 60px;
 }
 
 #checkoutButton:hover{
     background: #ff7b00;
     cursor:pointer;
+}
+
+#removeItem{
+    border-radius: 100%;
+    text-align: center;
+    display: flex;
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+    background-color: orangered;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border: 2px solid rgb(216, 216, 216);
+    margin-left: 153px;
+    margin-top: 1px;
+    outline: none;
+}
+
+#removeItem:hover{
+    cursor: pointer;
+}
+
+#removeItemInner{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -14px;
+    margin-left: -.08px;
+}
+
+#cartIsEmpty{
+    margin-top: 175px;
+    text-align: center;
+}
+
+#lock{
+    margin-right: 29px;
+    width: 20px;
+    height: 20px;
+    vertical-align: bottom;
+    margin-left: -20px;
+    margin-right: 9px;
 }

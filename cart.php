@@ -5,13 +5,25 @@
 
     $cartID = @$_SESSION['cartID'];
 
+    if (isset($_POST['subtractItem']) && isset($_POST['itemQuantity'])){
+        $newQuantity = $_POST['itemQuantity'] - 1;
+        $removedItemID = $_POST['subtractItem'];
+        if ($newQuantity < 1){
+            $statement = "DELETE FROM cartDetail WHERE productID='$removedItemID'";
+        }
+        else{
+            $statement = "UPDATE cartDetail SET quantity='$newQuantity' WHERE cartID='$cartID' AND productID='$removedItemID'";
+        }
+        $db->exec($statement);     
+    }
+
     $query = "SELECT SUM(quantity) FROM cartDetail WHERE cartID='$cartID'";
     $itemCount = $db->query($query);
     $itemCount = $itemCount->fetch();
 
     $query = "SELECT * from cartDetail WHERE cartID='$cartID'";
     $cartItems = $db->query($query);
-?>
+?> 
 
 <html lang="en" id="homeHTML">
     <head>
@@ -76,8 +88,13 @@
             <div id="cartContainer">
                 <div id="cartLeft">
                     <p id="shoppingCartTitle">Shopping Cart</p>
+                    <?php
+                        if ($itemCount['SUM(quantity)'] < 1){
+                            echo "<p id='cartIsEmpty'>Your cart is empty.</p>";
+                        }
+                    ?>
                     <table id="resultsTable">
-                        <form>
+                        <form method="POST">
                             <?php
                             $products = array();
                             $quantities = array();
@@ -100,12 +117,15 @@
                             ?>
                                 <td>
                                     <div class="cartItem">
+                                        <form method="POST">
+                                            <input name="itemQuantity" type="hidden" value="<?php echo $quantity;?>">
+                                            <input name="subtractItem" type="hidden" value="<?php echo $product['productID'];?>">
+                                            <button type="submit" id="removeItem"><span id="removeItemInner">-</span></button>
                                             <img class="cartItemPic" src="<?php echo $product['imgLink'];?>">
-                                            <p class="itemPrice">$<?php echo $product['price'] * $quantity?></p>
-                                            <p class="itemDescription">
-                                                <span class="individualQuantity"><?php echo "x".$quantity." ";?></span>
-                                                <?php echo $product['name'];?>
-                                            </p>
+                                            <p class="itemPrice">$<?php echo $product['price']?></p>
+                                            <p class="itemDescription"><?php echo $product['name'];?></p>
+                                            <p class="itemDescription">Quantity: <?php echo $quantity;?></p>
+                                        </form>
                                     </div>
                                 </td>
                             <?php
@@ -132,7 +152,7 @@
                                 <?php echo "x".$quantities[$x]." ".$products[$x];?>
                                 <span class="subtotalPrice">
                                     <?php 
-                                        echo "$".$prices[$x]; 
+                                        echo "$" . number_format($prices[$x], 2); 
                                         $subtotal += $prices[$x]; 
                                         $x++;
                                     ?>
@@ -143,7 +163,7 @@
                     </ul>
                     <p>__________________________________</p>
                     <h2 id="subtotalNum"><?php echo "$".$subtotal;?></h2>
-                    <a id="checkoutButton" href="checkout.php">CHECKOUT</a>
+                    <a id="checkoutButton" href="checkout.php"><img id="lock" src="images/lock.png">CHECKOUT</a>
                 </div>
             </div>
         </main>
