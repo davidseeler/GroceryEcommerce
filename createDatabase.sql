@@ -33,6 +33,14 @@ CREATE TABLE IF NOT EXISTS account (
   password VARCHAR(20) NOT NULL,
   cartID INT NOT NULL,
   creditCard VARCHAR(16) NOT NULL,
-  email VARCHAR(45) NOT NULL
+  email VARCHAR(45) NOT NULL,
+  phone VARCHAR(10) NOT NULL,
+  firstName VARCHAR(20) NOT NULL,
+  lastName VARCHAR(20) NOT NULL,
+  address1 VARCHAR(50) NOT NULL,
+  country VARCHAR(20) NOT NULL,
+  zipcode VARCHAR(5) NOT NULL,
+  city VARCHAR(20) NOT NULL,
+  state VARCHAR(20) NOT NULL
 );
 

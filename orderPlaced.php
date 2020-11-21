@@ -3,16 +3,13 @@
     session_start();
 
     $cartID = @$_SESSION['cartID'];
-    $subtotal = @$_SESSION['subtotal'];
-    $shipping = 7.66;
-    $totalB4Tax = $subtotal + $shipping;
-    $estimatedTax = number_format(($totalB4Tax * .06), 2);
-    $total = $totalB4Tax + $estimatedTax;
+    
+    $statement = "DELETE FROM cartDetail WHERE cartID='$cartID'";
+    $db->exec($statement);
 
     $query = "SELECT SUM(quantity) FROM cartDetail WHERE cartID='$cartID'";
     $itemCount = $db->query($query);
     $itemCount = $itemCount->fetch();
-
 ?>
 
 <html lang="en" id="homeHTML">
@@ -77,53 +74,18 @@
             </header>
         </form>
         <main id="homeMain">
-            <form action="orderPlaced.php" method="POST">
-                <p id="checkoutTitle">Review your order</p>
-                <div id="checkoutContainer">
-                    <div id="checkoutInfo">
-                        <?php
-                            $query = "SELECT * FROM account WHERE cartID='$cartID'";
-                            $accountInfo = $db->query($query);
-                            $accountInfo = $accountInfo->fetch();
-                        ?>
-                        <h2>Payment & Shipping</h2>
-                        <h4 class="checkoutSubtitle">Shipping Address</h4>
-                        <span><?php echo $accountInfo['firstName']." ".$accountInfo['lastName'];?></span><br>
-                        <span><?php echo strtoupper($accountInfo['address1']);?></span><br>
-                        <span><?php echo strtoupper($accountInfo['city']. ", ".$accountInfo['state'])." ".$accountInfo['zipcode'];?></span><br>
-                        <span><?php echo $accountInfo['country'];?></span><br>
-                        <span>Phone: <?php echo $accountInfo['phone'];?></span><br>
+            <div id="orderInfo">
+                <p>
+                    Your order has been successfully placed!<br>
+                    ORDER # 111-7670127-6938636
+                </p>
 
-                        <h4 class="checkoutSubtitle">Payment method</h4>
-                        <span><?php echo "VISA ending in ".substr($accountInfo['creditCard'], -4); ?></span>
+                <p>
+                    Estimated delivery: 3 business days
+                </p>
 
-                        <h4 class="checkoutSubtitle">Billing Address</h4>
-                        <span><?php echo $accountInfo['firstName']." ".$accountInfo['lastName'];?></span><br>
-                        <span><?php echo $accountInfo['address1'];?></span><br>
-                        <span><?php echo $accountInfo['city']. ", ".$accountInfo['state']." ".$accountInfo['zipcode'];?></span><br>
-                        <span><?php echo $accountInfo['country'];?></span><br><br>
-
-                        <a href="account.php">Edit Information</a>
-                
-                    </div>
-                    <div id="checkoutOrder">
-                        <h2>Order Summary</h2>
-                        <span class="checkoutLeft">Items <?php echo " (".$itemCount['SUM(quantity)']."):";?></span>
-                        <span class="checkoutRight"><?php echo "$".$subtotal;?></span><br><br>
-                        <span class="checkoutLeft">Shipping & handling:</span>
-                        <span class="checkoutRight"><?php echo "$".$shipping;?></span><br>
-                        <span class="checkoutRight">_________</span><br><br>
-                        <span class="checkoutLeft">Total before tax: </span>
-                        <span class="checkoutRight"><?php echo "$".$totalB4Tax;?></span><br><br>
-                        <span class="checkoutLeft">Estimated tax to be collected: </span>
-                        <span class="checkoutRight"><?php echo "$".$estimatedTax;?></span><br>
-                        <span>______________________________________</span><br><br>
-                        <span id="orderTotal" class="checkoutLeft">Order total: </span>
-                        <span id="orderTotal" class="checkoutRight"><?php echo "$".$total;?></span><br><br><br>
-                        <button id="orderButton" type="submit">Place your order</button>
-                    </div>
-                </div>
-            </form>
+                <a href="home.php">Return to Home</p>
+            </div>
         </main>
         <script src="index.js"></script>  
     </body>

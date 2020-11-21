@@ -162,7 +162,13 @@
                         </li>
                     </ul>
                     <p>__________________________________</p>
-                    <h2 id="subtotalNum"><?php echo "$".$subtotal;?></h2>
+                    <h2 id="subtotalNum">
+                        <?php 
+                            $subtotal = number_format($subtotal, 2);
+                            echo "$".$subtotal;
+                            $_SESSION['subtotal'] = $subtotal;
+                        ?>
+                    </h2>
                     <a id="checkoutButton" href="checkout.php"><img id="lock" src="images/lock.png">CHECKOUT</a>
                 </div>
             </div>

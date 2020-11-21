@@ -896,3 +896,91 @@ div#slider figure {
     margin-left: -20px;
     margin-right: 9px;
 }
+
+#checkoutTitle{
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: -25px;
+}
+
+#checkoutContainer{
+    text-align: center;
+}
+
+#checkoutInfo{
+    margin-top: 4%;
+    width: 385px;
+    height: 450px;
+    background-color: whitesmoke;
+    border: 2px solid black;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 15px;
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.checkoutSubtitle{
+    margin-bottom: 3px;
+}
+
+#checkoutOrder{
+    display: inline-block;
+    margin-top: 4%;
+    width: 385px;
+    height: 450px;
+    background-color: whitesmoke;
+    border: 2px solid black;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.checkoutLeft{
+    float: left;
+    padding-left: 20px;
+}
+
+.checkoutRight{
+    float: right;
+    padding-right: 20px;
+}
+
+#orderTotal{
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(156, 1, 1);
+}
+
+#orderButton{
+    text-decoration: none;
+    margin-top: -17px;
+    border: 1px solid grey;
+    font-weight: bold;
+    width: 220px;
+    height: 30px;
+    background: #ffab00;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 2px;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    border-radius: 24px; 
+    padding: 5px 12px 5px 12px;
+}
+
+#orderButton:hover{
+    background: #ff7b00;
+    cursor:pointer;
+}
+
+#orderInfo{
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    text-align: center;
+    margin-top: 10%;
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}

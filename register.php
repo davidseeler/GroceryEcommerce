@@ -13,6 +13,14 @@
         $creditcard = $_POST['credit-card'];
         $email = $_POST['email'];
         $cartID = rand(1000, 9999); // check for duplicates
+        $phone = $_POST['phone'];
+        $firstName = $_POST['firstName'];
+        $lastName = $_POST['lastName'];
+        $address1 = $_POST['address1'];
+        $country = $_POST['country'];
+        $zipcode = $_POST['zipcode'];
+        $city = $_POST['city'];
+        $state = $_POST['state'];
 
         // Username Validation
         if (!preg_match("/^[a-zA-Z0-9]*$/",$username)) {
@@ -45,10 +53,13 @@
             $_POST['passwordConfirmation'] = NULL;
             $_POST['credit-card'] = NULL;
             $_POST['email'] = NULL;
+            
         } else {
 
-            $statement = "INSERT INTO account (username, password, cartID, creditCard, email)
-            VALUES ('$username', '$password', $cartID, $creditcard, '$email')";
+            $statement = "INSERT INTO account (username, password, cartID, creditCard, email, phone, firstName, lastName,
+            address1, country, zipcode, city, state)
+            VALUES ('$username', '$password', $cartID, '$creditcard', '$email', '$phone', '$firstName', '$lastName', '$address1',
+            '$country', '$zipcode', '$city', '$state')";
             $db->exec($statement);
 
             // Create session variables
@@ -91,7 +102,7 @@
                 var errorMessage = "";
 
                 if (username == "" || password == "" || passwordConfirmation == "" || creditCard == "" || email == "" 
-                    || phone == "" || firstName == "" || lastName == "" || address1 == "" || address2 == "" || 
+                    || phone == "" || firstName == "" || lastName == "" || address1 == "" || 
                     country == "" || zipcode == "" || city == "" || state == "") {
 
                 errorMessage = "All Fields must be filled in!";
@@ -182,22 +193,24 @@
                             </li>
                     </div>    
                     <div id="rightRegister">
-                        <ul id="rightRegisterList">
-                            <li>
-                                <label>Shipping Address:</label>
-                                <span class="error">*</span><br>
-                                <input class="registerField" name="firstName" id="firstName" type="text" placeholder="First Name"><br>
-                                <input class="registerField" name="lastName" id="lastName" type="text" placeholder="Last Name"><br>
-                                <input class="registerField" name="address1" id="address1" type="text" placeholder="Address 1"><br>
-                                <input class="registerField" name="address2" id="address2" type="text" placeholder="Address 2"><br>
-                                <input class="registerField" name="country" id="country" type="text" placeholder="Country / Region"><br>
-                                <input class="registerField" name="zipcode" id="zipcode" type="text" placeholder="Zipcode"><br>
-                                <input class="registerField" name="city" id="city" type="text" placeholder="City"><br>
-                                <input class="registerField" name="state" id="state" type="text" placeholder="State"><br>
-                                <label id="sameAddressLabel">Same as billing address?</label>
-                                <input id="sameAddressBox" name="sameAddress" type="checkbox">
-                            </li>
-                        </ul>
+                        <form method="POST">
+                            <ul id="rightRegisterList">
+                                <li>
+                                    <label>Shipping Address:</label>
+                                    <span class="error">*</span><br>
+                                    <input class="registerField" name="firstName" id="firstName" type="text" placeholder="First Name*"><br>
+                                    <input class="registerField" name="lastName" id="lastName" type="text" placeholder="Last Name*"><br>
+                                    <input class="registerField" name="address1" id="address1" type="text" placeholder="Address 1*"><br>
+                                    <input class="registerField" name="address2" id="address2" type="text" placeholder="Address 2"><br>
+                                    <input class="registerField" name="country" id="country" type="text" placeholder="Country / Region*"><br>
+                                    <input class="registerField" name="zipcode" id="zipcode" type="text" placeholder="Zipcode*"><br>
+                                    <input class="registerField" name="city" id="city" type="text" placeholder="City*"><br>
+                                    <input class="registerField" name="state" id="state" type="text" placeholder="State*"><br>
+                                    <label id="sameAddressLabel">Same as billing address?</label>
+                                    <input id="sameAddressBox" name="sameAddress" type="checkbox">
+                                </li>
+                            </ul>
+                        </form>
                     </div>
                     </ul>
                     <input id="registerSubmit" type="submit">

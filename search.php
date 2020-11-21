@@ -72,7 +72,7 @@
     $results = $db->query($query);
 ?>
 
-<html lang="en" id="searchHTML">
+<html lang="en" id="homeHTML">
     <head>
         <meta charset="UTF-8">
         <title>NED's Grocery</title>
@@ -82,10 +82,10 @@
         <link rel="stylesheet" href="slider.css">
         <link rel="stylesheet" href="style.css">
     </head>
-    <body id="searchBody">
+    <body id="homeBody">
         <form method="POST">
             <header>
-                <nav id="searchNav">
+                <nav id="homeNav">
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <a href="account.php">Account</a>
