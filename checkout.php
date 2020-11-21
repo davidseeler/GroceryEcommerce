@@ -119,7 +119,7 @@
                         <span class="checkoutRight"><?php echo "$".$estimatedTax;?></span><br>
                         <span>______________________________________</span><br><br>
                         <span id="orderTotal" class="checkoutLeft">Order total: </span>
-                        <span id="orderTotal" class="checkoutRight"><?php echo "$".$total;?></span><br><br><br>
+                        <span id="orderTotal" class="checkoutRight"><?php echo "$".number_format($total, 2);?></span><br><br><br>
                         <button id="orderButton" type="submit">Place your order</button>
                     </div>
                 </div>
