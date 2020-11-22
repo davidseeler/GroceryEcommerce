@@ -604,7 +604,7 @@ div#slider figure {
     width: 30%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 5%;
+    margin-top: 2%;
     text-align: center;
     border-radius: 10px;
 }
@@ -741,7 +741,7 @@ div#slider figure {
 
 #registerSubmit{
     text-decoration: none;
-    margin-top: 14px;
+    margin-top: -3px;
     border: 1px solid grey;
     font-weight: bold;
     width: 130px;
@@ -982,4 +982,8 @@ div#slider figure {
     width: 350px;
     margin-left: auto;
     margin-right: auto;
+}
+
+button{
+    outline: none;
 }

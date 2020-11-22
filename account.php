@@ -22,9 +22,12 @@
     $account = $db->query($query);
     $account = $account->fetch();
 
+    $name = $account['firstName']." ".$account['lastName'];
     $email = $account['email'];
     $credit_card = $account['creditCard'];
     $credit_card = "********".substr($credit_card, -4);
+    $phone = $account['phone'];
+    $address = $account['address1']."...";
 ?>
 
 <html lang="en" id="homeHTML">
@@ -90,11 +93,14 @@
             <div id="accountContainer">
                 <img id="accountPageIcon" src="images/accountIcon.png">
                 <h2 id="accountUsername"><?php echo $_SESSION['username'];?></h2> 
+                <p>Name: <?php echo $name;?></p>
+                <p>Phone: <?php echo $phone;?></p>
                 <p>Email: <?php echo $email;?></p>
-                <p>Credit Card: <?php echo $credit_card?></p>
+                <p>Credit Card: <?php echo $credit_card;?></p>
+                <p>Address: <?php echo $address;?></p>
                 <a href="cart.php">Shopping Cart</p>
-                <a href="#">Browsing History</p>
                 <a href="#">Order History</p>
+                <a href="account.php">Edit Information</p>
                 <br>
                 <form method="POST">
                     <input name="signout" type="hidden">
