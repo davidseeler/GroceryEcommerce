@@ -35,7 +35,7 @@
         $itemCount = $db->query($query);
         $itemCount = $itemCount->fetch();
 
-        
+	header("Location: search.php");        
     }
 ?>
 
