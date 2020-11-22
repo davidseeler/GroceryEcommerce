@@ -29,14 +29,13 @@
             $statement = "UPDATE cartDetail SET quantity=(quantity + '$quantity') WHERE productID=$id";
         }
         
-
         $db->exec($statement);
 
         $query = "SELECT SUM(quantity) FROM cartDetail WHERE cartID = '$cartID'";
         $itemCount = $db->query($query);
         $itemCount = $itemCount->fetch();
 
-        header("Location: search.php");
+        
     }
 ?>
 
