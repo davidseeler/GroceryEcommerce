@@ -69,9 +69,10 @@ require('database.php');
                         $statement = $db->prepare($query);
                         $statement->execute();
                         $account = $statement->fetch();
+                        $hashed_password = @$account['hashed_password'];
                         $statement->closeCursor();
                         
-                        if (!empty($account)) {
+                        if (!empty($account) && password_verify($password, $hashed_password)) {
                             $_SESSION['username'] = $account['username'];
                             $_SESSION['cartID'] = $account['cartID'];
 

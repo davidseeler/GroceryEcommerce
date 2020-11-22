@@ -9,6 +9,7 @@
     if (isset($_POST['username'])){
         $username = $_POST['username'];
         $password = $_POST['password'];
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $confirmation = $_POST['passwordConfirmation'];
         $creditcard = $_POST['credit-card'];
         $email = $_POST['email'];
@@ -56,9 +57,9 @@
             
         } else {
 
-            $statement = "INSERT INTO account (username, password, cartID, creditCard, email, phone, firstName, lastName,
+            $statement = "INSERT INTO account (username, password, hashed_password, cartID, creditCard, email, phone, firstName, lastName,
             address1, country, zipcode, city, state)
-            VALUES ('$username', '$password', $cartID, '$creditcard', '$email', '$phone', '$firstName', '$lastName', '$address1',
+            VALUES ('$username', '$password', '$hashed_password', $cartID, '$creditcard', '$email', '$phone', '$firstName', '$lastName', '$address1',
             '$country', '$zipcode', '$city', '$state')";
             $db->exec($statement);
 
