@@ -17,7 +17,7 @@
 
         $quantity = $_POST['quantity'];
         
-        $query = "SELECT * FROM cartDetail WHERE productID='$id'";
+        $query = "SELECT * FROM cartDetail WHERE productID='$id' AND cartID='$cartID'";
         $productTest = $db->query($query);
         $productTest = $productTest->fetch();
 
