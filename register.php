@@ -28,6 +28,15 @@
             $usernameErr = "Only alphanumeric characters allowed.";
         }
 
+        // Check if username is taken
+        $query = "SELECT * FROM account WHERE username='$username'";
+        $usernameCheck = $db->query($query);
+        $usernameCheck = $usernameCheck->fetch();
+
+        if (!empty($usernameCheck)){
+            $usernameErr = "Username already taken.";
+        }
+
         // Password Validation
         if (strcmp($password, $confirmation) !== 0) {
             $confirmationErr = "Passwords must match. ";
