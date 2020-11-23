@@ -1252,6 +1252,7 @@ button{
 	float: left;
 	width: 45%;
 	text-align: right;
+	margin-left: 0%;
 }
 
 #orderSummary input {
