@@ -1,28 +1,28 @@
 <?php
+	// Include Database
     include('database.php');
-
-    session_start();
-
+	
+	// Check for existing session (Might not be necessary, but better safe than sorry)
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
+	
+	// Obtain cart ID from Session
     $cartID = @$_SESSION['cartID'];
 
-    if (isset($_POST['subtractItem']) && isset($_POST['itemQuantity'])){
-        $newQuantity = $_POST['itemQuantity'] - 1;
-        $removedItemID = $_POST['subtractItem'];
-        if ($newQuantity < 1){
-            $statement = "DELETE FROM cartDetail WHERE productID='$removedItemID'";
-        }
-        else{
-            $statement = "UPDATE cartDetail SET quantity='$newQuantity' WHERE cartID='$cartID' AND productID='$removedItemID'";
-        }
-        $db->exec($statement);     
-    }
-
+	// Necessary for Account updates
     $query = "SELECT SUM(quantity) FROM cartDetail WHERE cartID='$cartID'";
     $itemCount = $db->query($query);
     $itemCount = $itemCount->fetch();
 
-    $query = "SELECT * from cartDetail WHERE cartID='$cartID'";
-    $cartItems = $db->query($query);
+	// Get products for selected category
+	$queryCart = 'SELECT * FROM cartDetail
+					WHERE cartID = :cartID';
+	$statement1 = $db->prepare($queryCart);
+	$statement1->bindValue(':cartID', $cartID);
+	$statement1->execute();
+	$cartItems = $statement1->fetchAll();
+	$statement1->closeCursor();
 ?> 
 
 <html lang="en" id="homeHTML">
@@ -84,94 +84,86 @@
                 </nav>
             </header>
         </form>
-        <main>
-            <div id="cartContainer">
-                <div id="cartLeft">
-                    <p id="shoppingCartTitle">Shopping Cart</p>
-                    <?php
-                        if ($itemCount['SUM(quantity)'] < 1){
-                            echo "<p id='cartIsEmpty'>Your cart is empty.</p>";
-                        }
-                    ?>
-                    <table id="resultsTable">
-                        <form method="POST">
-                            <?php
-                            $products = array();
-                            $quantities = array();
-                            $i = 0;
-                            foreach($cartItems as $item):
-                                if (empty($cartItems)){
-                                    echo "<p>empty</p>";
-                                }
-                                else{
-                                    
-                                }
-                                if ($i % 4 == 0){
-                                    echo "<tr>";
-                                }
-                                $quantity = $item['quantity'];
-                                $productID = $item['productID'];
-                                $query = "SELECT * FROM products WHERE productID='$productID'";
-                                $product = $db->query($query);
-                                $product = $product->fetch();
-                            ?>
-                                <td>
-                                    <div class="cartItem">
-                                        <form method="POST">
-                                            <input name="itemQuantity" type="hidden" value="<?php echo $quantity;?>">
-                                            <input name="subtractItem" type="hidden" value="<?php echo $product['productID'];?>">
-                                            <button type="submit" id="removeItem"><span id="removeItemInner">-</span></button>
-                                            <img class="cartItemPic" src="<?php echo $product['imgLink'];?>">
-                                            <p class="itemPrice">$<?php echo $product['price']?></p>
-                                            <p class="itemDescription"><?php echo $product['name'];?></p>
-                                            <p class="itemDescription">Quantity: <?php echo $quantity;?></p>
-                                        </form>
-                                    </div>
-                                </td>
-                            <?php
-                            $products[] = $product['name'];
-                            $quantities[] = $quantity;
-                            $prices[] = $product['price'] * $quantity;
-                            $i++;
-                            if ($i % 4 == 0){
-                                echo "</tr>";
-                            } endforeach;?>
-                        </form>
-                    </table>
-                </div>
-                <div id="cartRight">
-                    <h1>Subtotal</h1>
-                    <ul id="cartList">
-                        <?php
-                            $subtotal = 0;
-                            $x = 0;
-                            foreach ($products as $grocery):
-                        ?>
-                        <li>
-                            <p class="subtotalItem">
-                                <?php echo "x".$quantities[$x]." ".$products[$x];?>
-                                <span class="subtotalPrice">
-                                    <?php 
-                                        echo "$" . number_format($prices[$x], 2); 
-                                        $subtotal += $prices[$x]; 
-                                        $x++;
-                                    ?>
-                                </span>
-                            </p>
-                            <?php endforeach;?>
-                        </li>
-                    </ul>
-                    <p>__________________________________</p>
-                    <h2 id="subtotalNum">
-                        <?php 
-                            $subtotal = number_format($subtotal, 2);
-                            echo "$".$subtotal;
-                            $_SESSION['subtotal'] = $subtotal;
-                        ?>
-                    </h2>
-                    <a id="checkoutButton" href="checkout.php"><img id="lock" src="images/lock.png">CHECKOUT</a>
-                </div>
-            </div>
+        <main id = "cartMain">
+			<div id = "itemList">
+				<table id = "itemTable">
+					<thead>
+						<?php
+							if ($itemCount['SUM(quantity)'] != NULL) {
+								echo "<tr>
+										<th>&nbsp;</th>
+										<th>Name</th>
+										<th>Quantity</th>
+										<th class = 'right'>Price</th>
+										<th class = 'right'>Total Price</th>
+										<th>&nbsp;</th>
+									</tr>";
+							}
+							else {
+								echo "<h4>Cart is Empty</h4>";
+							}
+						?>
+					</thead>
+					<tbody>
+						<?php
+							$grandTotal = 0; 
+							foreach ($cartItems as $item) :
+								// Obtain quantity of items
+								$itemQuantity = $item['quantity'];
+							
+								// Obtain product name
+								$productID = $item['productID'];
+								$queryName = 'SELECT * FROM products
+											WHERE productID = :productID';
+								$statement2 = $db->prepare($queryName);
+								$statement2->bindValue(':productID', $productID);
+								$statement2->execute();
+								$product = $statement2->fetch();
+								$statement2->closeCursor();
+							
+								// Obtain total price of all items
+								$totalPrice = $product['price'] * $itemQuantity;
+								
+								// Keep tally of final price of basket
+								$grandTotal += $totalPrice;
+						?>
+						<tr>
+							<td id = "itemPic"><img class = "cartPic" src = "<?php echo $product['imgLink'];?>">
+							<td id = "itemName" class = "right"><?php echo $product['name']; ?></td>
+							<td id = "itemQuant" class = "right"><?php echo $itemQuantity; ?></td>
+							<td id = "itemPrice" class = "right">$ <?php echo $product['price']; ?></td>
+							<td id = "itemTotalPrice" class = "right">$ <?php echo number_format($totalPrice, 2); ?></td>
+							<td id = "deleteItem"><form action = "delete_from_cart.php" method = "post">
+								<input type = "hidden" name = "delete"
+									value = "<?php echo $product['productID']; ?>">
+								<input type = "submit" value = "Delete"></form></td>
+						</tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+				<h3>_________________________________________________</h3>
+			</div>
+			<div id = "itemTotals">
+				<?php 
+					// Calculate gross total from grandTotal and sales tax
+					$salesTax = $grandTotal * 0.04;
+					$grossTotal = $grandTotal * 1.04;
+					$_SESSION['grossTotal'] = $grossTotal;
+				?>
+				<h3>Grand Total:</h3>
+				<h4>Before Taxes: $ <?php echo number_format($grandTotal, 2); ?></h4> 
+				<h4>Sales Tax: $ <?php echo number_format($salesTax, 2); ?></h4>
+				<h4>Final Price: $ <?php echo number_format($grossTotal, 2); ?></h4>
+			</div>
+			<div id = "checkoutButtonFormatting">
+				<a id="newCheckoutButton" href="checkout.php"><img id = "shopCartIcon" src = "images/shopping_cart_right.png">CLICK TO CHECKOUT</a><br>
+			</div>
+			<div id = "rtsButtonFormatting">
+				<a id="backToShoppingButton" href="search.php"><img id = "returnToShopIcon" src = "images/back.png">   BACK TO SHOPPING </a>
+			</div>
+			<div id = "editAccountFormatting">
+				<a id="editAccountButton" href="account.php"><img id = "backToAccountIcon" src = "images/accountIcon.png">   EDIT ACCOUNT  </a>
+			</div>
         </main>
         <script src="index.js"></script>  
     </body>

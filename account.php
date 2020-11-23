@@ -1,7 +1,11 @@
 <?php
     include('database.php');
-    session_start();
-
+	
+	// Check for existing session (Might not be necessary, but better safe than sorry)
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
+	
     if (!isset($_SESSION['username'])){
         header("Location: signin.php"); 
     }
