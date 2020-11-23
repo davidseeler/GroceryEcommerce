@@ -1063,7 +1063,7 @@ button{
     text-decoration: none;
     border: 2px solid Black;
     font-weight: bold;
-    background: #40ff00;
+    background: #ffab00;
     font-size: 15px;
     line-height: 18px;
 	letter-spacing: 1px;
@@ -1076,7 +1076,7 @@ button{
 }
 
 #newCheckoutButton:hover{
-    background-image: repeating-linear-gradient(to bottom right, #8cff66, #ffffff);
+    background-image: repeating-linear-gradient(to bottom right, #ffcc66, #ffffff);
 }
 
 #shopCartIcon{
@@ -1091,7 +1091,7 @@ button{
     text-decoration: none;
     border: 2px solid Black;
     font-weight: bold;
-    background: #ffff00;
+    background: #ffab00;
     font-size: 15px;
     line-height: 18px;
 	letter-spacing: 1px;
@@ -1104,7 +1104,7 @@ button{
 }
 
 #backToShoppingButton:hover{
-    background-image: repeating-linear-gradient(to bottom right, #ffff80, #ffffff);
+    background-image: repeating-linear-gradient(to bottom right, #ffcc66, #ffffff);
 }
 
 #rtsButtonFormatting {
@@ -1128,7 +1128,7 @@ button{
     text-decoration: none;
     border: 2px solid Black;
     font-weight: bold;
-    background: #00bfff;
+    background: #ffab00;
     font-size: 15px;
     line-height: 18px;
 	letter-spacing: 1px;
@@ -1141,7 +1141,7 @@ button{
 }
 
 #editAccountButton:hover{
-    background-image: repeating-linear-gradient(to bottom right, #80dfff, #ffffff);
+    background-image: repeating-linear-gradient(to bottom right, #ffcc66, #ffffff);
 }
 
 #backToAccountIcon{
@@ -1255,7 +1255,7 @@ button{
     text-decoration: none;
     border: 2px solid Black;
     font-weight: bold;
-    background: #40ff00;
+    background: #ffcc66;
     font-size: 15px;
     line-height: 18px;
 	letter-spacing: 1px;
@@ -1268,7 +1268,7 @@ button{
 }
 
 #finalCheckoutButton:hover{
-    background-image: repeating-linear-gradient(to bottom right, #8cff66, #ffffff);
+    background-image: repeating-linear-gradient(to bottom right, #ffcc66, #ffffff);
 }
 
 #contactMain {
