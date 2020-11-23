@@ -87,16 +87,16 @@
         <main id = "cartMain">
 			<div id = "itemList">
 				<table id = "itemTable">
-					<thead>
+					<thead id = "cartTitles">
 						<?php
 							if ($itemCount['SUM(quantity)'] != NULL) {
 								echo "<tr>
 										<th>&nbsp;</th>
-										<th>Name</th>
-										<th>Quantity</th>
+										<th id = 'rowName' class = 'right'>Name</th>
+										<th class = 'right'>Quantity</th>
 										<th class = 'right'>Price</th>
 										<th class = 'right'>Total Price</th>
-										<th>&nbsp;</th>
+										<th>Delete all</th>
 									</tr>";
 							}
 							else {
@@ -104,7 +104,7 @@
 							}
 						?>
 					</thead>
-					<tbody>
+					<tbody id = "cartInfo">
 						<?php
 							$grandTotal = 0; 
 							foreach ($cartItems as $item) :
@@ -136,7 +136,7 @@
 							<td id = "deleteItem"><form action = "delete_from_cart.php" method = "post">
 								<input type = "hidden" name = "delete"
 									value = "<?php echo $product['productID']; ?>">
-								<input type = "submit" value = "Delete"></form></td>
+								<button type = "submit" id = "deleteItemButton"></button></form></td>
 						</tr>
 						<?php endforeach; ?>
 					</tbody>

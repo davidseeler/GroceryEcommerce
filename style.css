@@ -1030,48 +1030,110 @@ button{
     font-size: 13px;
 }
 
+.right {
+	text-align: right;
+	padding-right: 10px;
+}
+
+.titleRight {
+	text-align: left;
+}
+
 #itemList {
 	margin: auto;
-	width: 100%;
-	margin-left: 20%;
+	width: 90%;
+	margin-left: 10%;
 	margin-right: 20%;
 	padding-top: 15px;
 }
 
 #itemTable {
-	border: 1px solid Black;
+	border: 2px solid Black;
 	border-collapse: collapse;
 	padding-top: 15px;
+}
+
+#rowName {
+	text-align: right;
+}
+
+#itemName {
+	padding-right: 15px;
 }
 
 #itemQuant {
 	padding-right: 15px;
 }
 
+#itemPrice {
+	padding-right: 15px;
+}
+
+#deleteItem {
+	padding-right: 15px;
+}
+
 #itemTable th {
-	border: 1px dashed Black;
+	border: 1px solid Black;
 	padding-left: 5px;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	text-align: left;
+	background-color: #ffab00;
+}
+
+#itemTable tr:nth-child(even){
+	background-color: #ffffff;
+}
+
+#itemTable tr:nth-child(odd){
+	background-color: #d9d9d9;
 }
 
 #itemTable td {
-	border: 1px dashed Black;
+	border: 1px solid Black;
 	padding-left: 5px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+}
+
+#deleteItemButton{
+    border-radius: 100%;
+    text-align: center;
+    display: flex;
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+    background-color: orangered;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    border: 2px solid rgb(216, 216, 216);
+    outline: none;
+	margin-left: 19px;
+	margin-top: -10px;
+}
+
+#deleteItemButton:hover{
+    cursor: pointer;
+}
+
+#deleteItemInner{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -14px;
+    margin-left: -.08px;
 }
 
 #itemTotals {
 	margin: auto;
 	width: 95%;
-	margin-left: 20%;
+	margin-left: 10%;
 }
 
 #checkoutButtonFormatting {
 	margin-bottom: 30px;
-	margin-left: 20%;
+	margin-left: 10%;
 }
 
 #newCheckoutButton{
@@ -1123,7 +1185,7 @@ button{
 }
 
 #rtsButtonFormatting {
-	margin-left: 20%;
+	margin-left: 10%;
 	margin-bottom: 30px;
 }
 
@@ -1136,7 +1198,7 @@ button{
 }
 
 #editAccountFormatting {
-	margin-left: 20%;
+	margin-left: 10%;
 }
 
 #editAccountButton{
@@ -1307,7 +1369,7 @@ button{
 	float: left;
 }
 
-#danielPicture {
+#davidPicture {
 	margin-left: 35px;
 	height: 100px;
 	float: left;
@@ -1358,11 +1420,11 @@ button{
 	border-radius: 10px;
 }
 
-#danielName {
+#davidName {
 	margin-left: 150px;
 }
 
-#danielEmail {
+#davidEmail {
 	margin-left: 150px;
 }
 
