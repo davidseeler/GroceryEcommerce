@@ -1014,6 +1014,7 @@ button{
 	padding-bottom: 5%;
 	border: 3px solid black;
 	height: auto;
+	border-radius: 10px;
 }
 
 #cartFooter{
@@ -1177,7 +1178,7 @@ button{
 	margin: auto;
 	background-color: whitesmoke;
 	width: 90%;
-	padding-bottom: 25px;
+	padding-bottom: 3%;
 	border: 3px solid black;
 }
 
