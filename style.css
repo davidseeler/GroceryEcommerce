@@ -1010,7 +1010,7 @@ button{
 #cartMain{
 	margin: auto;
 	background-color: whitesmoke;
-	width: 650px;
+	width: 80%;
 	padding-bottom: 5%;
 	border: 3px solid black;
 	height: auto;
@@ -1183,11 +1183,11 @@ button{
 }
 
 #shippingInfo{
+	width: 40%;
 	float: left;
 	margin-top: 25px;
-	margin-right: 10%px;
-	margin-left: 2%;
-	margin-bottom: 50px;
+	margin-left: 5%;
+	margin-bottom: 10%;
 	padding: 10px 10px 10px;
 	padding-bottom: -20px;
 	background-color: whitesmoke;
@@ -1210,7 +1210,8 @@ button{
 #billingInfo{
 	float: right;
 	margin-top: 25px;
-	margin-right: 2%;
+	margin-right: 5%;
+	width: 40%;
 	padding: 10px 10px 17px 10px;
 	background-color: whitesmoke;
     border: 2px solid black;
@@ -1242,7 +1243,7 @@ button{
 	margin-left: 30%;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	margin-top: 30%;
+	margin-top: 10%;
 	border-radius: 10px;
 }
 
