@@ -1010,16 +1010,29 @@ button{
 #cartMain{
 	margin: auto;
 	background-color: whitesmoke;
-	width: 50%;
-	padding-bottom: 25px;
+	width: 650px;
+	padding-bottom: 5%;
 	border: 3px solid black;
 	height: auto;
 }
 
+#cartFooter{
+	margin-top: 100px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-image: linear-gradient(white -200%, rgb(224, 159, 38) 200%);
+}
+
+#cartFooter p{
+    text-align: center;
+    font-size: 13px;
+}
+
 #itemList {
 	margin: auto;
-	width: 95%;
-	margin-left: 250px;
+	width: 100%;
+	margin-left: 8%;
 	padding-top:15px;
 }
 
@@ -1051,7 +1064,7 @@ button{
 #itemTotals {
 	margin: auto;
 	width: 95%;
-	margin-left: 400px;
+	margin-left: 100px;
 }
 
 #checkoutButtonFormatting {
@@ -1331,7 +1344,7 @@ button{
 	margin-right: 150px;
 }
 
-#danielInfo {
+#davidInfo {
 	padding-top: 35px;
 	padding-bottom: 50px;
 	margin-bottom: 50px;
