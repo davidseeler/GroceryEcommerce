@@ -34,7 +34,7 @@
                         <a href="search.php">Search</a>
                         <a href="search.php">Department</a>
                         <a href="checkout.php">Checkout</a>
-                        <a href="#">Contact</a>
+                        <a href="contact.html">Contact</a>
                     </div>
                     <span id="menuButton" onclick="openNav()">&#9776;</span>
                     <a href="home.php"><img id="logo" src="images/logo.png"></a>

@@ -1,18 +1,34 @@
 <?php
+	// Include Database
     include('database.php');
-    session_start();
-
-    $cartID = @$_SESSION['cartID'];
-    $subtotal = @$_SESSION['subtotal'];
-    $shipping = 7.66;
-    $totalB4Tax = $subtotal + $shipping;
-    $estimatedTax = number_format(($totalB4Tax * .06), 2);
-    $total = $totalB4Tax + $estimatedTax;
-
-    $query = "SELECT SUM(quantity) FROM cartDetail WHERE cartID='$cartID'";
+	
+	// Check for existing session (Might not be necessary, but better safe than sorry)
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
+	
+	// Obtain cart ID from session
+	$cartID = @$_SESSION['cartID'];
+	
+	// Necessary for Account Update
+	$query = "SELECT SUM(quantity) FROM cartDetail WHERE cartID='$cartID'";
     $itemCount = $db->query($query);
     $itemCount = $itemCount->fetch();
-
+    
+	// Obtain grossTotal from previous cart view
+	$grossTotal = @$_SESSION['grossTotal'];
+	
+	// Compute total cost for later
+	$totalOverallCost = $grossTotal + 6.99;
+	
+	// Obtain account Info for filling
+	$queryAccount = 'SELECT * FROM account
+					WHERE cartID = :cartID';
+	$statement1 = $db->prepare($queryAccount);
+	$statement1->bindValue(':cartID', $cartID);
+	$statement1->execute();
+	$userAccount = $statement1->fetch();
+	$statement1->closeCursor();
 ?>
 
 <html lang="en" id="homeHTML">
@@ -25,9 +41,18 @@
         <link rel="stylesheet" href="slider.css">
         <link rel="stylesheet" href="style.css">
         <script data-require="jquery@3.1.1" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="script.js"></script>
+        <script Language = "Javascript">
+			function enable_text(status) {
+			status =! status;	
+				document.billingInfo.billName.disabled = status;
+				document.billingInfo.billAddress1.disabled = status;
+				document.billingInfo.billCountry.disabled = status;
+				document.billingInfo.billCityState.disabled = status;
+				document.billingInfo.billZip.disabled = status;
+			}
+		</script>
     </head>
-    <body id="homeBody">
+    <body id="homeBodyCheckout">
     <form method="POST" action="search.php">
             <header>
                 <nav id="homeNav">
@@ -76,59 +101,72 @@
                 </nav>
             </header>
         </form>
-        <main id="homeMain">
-            <form action="orderPlaced.php" method="POST">
-                <p id="checkoutTitle">Review your order</p>
-                <div id="checkoutContainer">
-                    <div id="checkoutInfo">
-                        <?php
-                            $query = "SELECT * FROM account WHERE cartID='$cartID'";
-                            $accountInfo = $db->query($query);
-                            $accountInfo = $accountInfo->fetch();
-                        ?>
-                        <h2>Payment & Shipping</h2>
-                        <h4 class="checkoutSubtitle">Shipping Address</h4>
-                        <span><?php echo $accountInfo['firstName']." ".$accountInfo['lastName'];?></span><br>
-                        <span><?php echo strtoupper($accountInfo['address1']);?></span><br>
-                        <span><?php echo strtoupper($accountInfo['city']. ", ".$accountInfo['state'])." ".$accountInfo['zipcode'];?></span><br>
-                        <span><?php echo $accountInfo['country'];?></span><br>
-                        <span>Phone: <?php echo $accountInfo['phone'];?></span><br>
-
-                        <h4 class="checkoutSubtitle">Payment method</h4>
-                        <span><?php echo "VISA ending in ".substr($accountInfo['creditCard'], -4); ?></span>
-
-                        <h4 class="checkoutSubtitle">Billing Address</h4>
-                        <span><?php echo $accountInfo['firstName']." ".$accountInfo['lastName'];?></span><br>
-                        <span><?php echo $accountInfo['address1'];?></span><br>
-                        <span><?php echo $accountInfo['city']. ", ".$accountInfo['state']." ".$accountInfo['zipcode'];?></span><br>
-                        <span><?php echo $accountInfo['country'];?></span><br><br>
-
-                        <a href="account.php">Edit Information</a>
-                
-                    </div>
-                    <div id="checkoutOrder">
-                        <h2>Order Summary</h2>
-                        <span class="checkoutLeft">Items <?php echo " (".$itemCount['SUM(quantity)']."):";?></span>
-                        <span class="checkoutRight"><?php echo "$".$subtotal;?></span><br><br>
-                        <span class="checkoutLeft">Shipping & handling:</span>
-                        <span class="checkoutRight"><?php echo "$".$shipping;?></span><br>
-                        <span class="checkoutRight">_________</span><br><br>
-                        <span class="checkoutLeft">Total before tax: </span>
-                        <span class="checkoutRight"><?php echo "$".$totalB4Tax;?></span><br><br>
-                        <span class="checkoutLeft">Estimated tax to be collected: </span>
-                        <span class="checkoutRight"><?php echo "$".$estimatedTax;?></span><br>
-                        <span>______________________________________</span><br><br>
-                        <span id="orderTotal" class="checkoutLeft">Order total: </span>
-                        <span id="orderTotal" class="checkoutRight"><?php echo "$".number_format($total, 2);?></span><br><br><br>
-                        <button id="orderButton" type="submit">Place your order</button>
-                    </div>
-                </div>
-            </form>
+        <main id = "checkoutMain" onload = enable_text(false);>
+			<div id = "shippingInfo">
+				<h2>Shipping Information</h2>
+				<label>Name:</label>
+				<input type = "text" id = "shipName" value = "<?php echo $userAccount['firstName']; ?> <?php echo $userAccount['lastName']; ?>" required><br>
+				
+				<label>Street Address:</label>
+				<input type = "text" id = "shipAddress1" value = "<?php echo $userAccount['address1']; ?>" required><br>
+				
+				<label>Country:</label>
+				<input type = "text" id = "shipCountry" value = "<?php echo $userAccount['country']; ?>" required><br>
+				
+				<label>City, State:</label>
+				<input type = "text" id = "shipCityState" value = "<?php echo $userAccount['city']; ?>, <?php echo $userAccount['state']; ?>" required><br>
+				
+				<label>Zip:</label>
+				<input type = "text" id = "shipZip" value = "<?php echo $userAccount['zipcode']; ?>" required><br>
+				
+				<input type= "checkbox" name = "diffShip" id = "diffShip" onclick = "enable_text(this.checked)" >Different Billing Address?<br>
+			</div>
+			<form name = "billingInfo" id = "billingInfo" method = "post">
+				<h2>Billing Information</h2>
+				
+				<label id = "billNameLabel">Name:</label>
+				<input type = "text" name = "billName" id = "billName" value = "<?php echo $userAccount['firstName']; ?> <?php echo $userAccount['lastName']; ?>" required disabled><br>
+				
+				<label>Street Address:</label>
+				<input type = "text" name = "billAddress1" id = "billAddress1" value = "<?php echo $userAccount['address1']; ?>" required disabled><br>
+				
+				<label>Country:</label>
+				<input type = "text" name = "billCountry" id = "billCountry" value = "<?php echo $userAccount['country']; ?>" required disabled><br>
+				
+				<label>City, State:</label>
+				<input type = "text" name = "billCityState" id = "billCityState" value = "<?php echo $userAccount['city']; ?>, <?php echo $userAccount['state']; ?>" required disabled><br>
+				
+				<label>Zip:</label>
+				<input type = "text" name = "billZip" id = "billZip"value = "<?php echo $userAccount['zipcode']; ?>" required disabled><br>
+				
+				<label>&nbsp;</label>
+			</form>
+			<form action = "checkout_clean.php" method = "post" id = "orderSummary">
+				<h2>Total Grocery Price:</h2>
+				<h3>Gross Total: $ <?php echo number_format($grossTotal, 2); ?></h3>
+				<h3>Shipping Costs: $ 6.99</h3>
+				<h3>__________________________________</h3>
+				<h2>Total Factored Cost: $ <?php echo number_format($totalOverallCost, 2); ?></h2>
+				<h3>__________________________________</h3>
+				
+				<label>Card Holder Name:</label>
+				<input type = "text" name = "cardName" id = "cardName" value = "<?php echo $userAccount['firstName']; ?> <?php echo $userAccount['lastName']; ?>" required><br>
+				
+				<label>Card Number:</label>
+				<input type = "text" name = "cardNumber" id = "cardNumber" value = "<?php echo $userAccount['creditCard']; ?>" required><br>
+				
+				<label>Expiration Date:</label>
+				<input type = "text" name = "cardExp" title = "Format must be MM/YYYY" required><br>
+				
+				<label>Security Code:</label>
+				<input type = "text" class = "code" name = "cardCode" required>
+							
+				<input type = "submit" id = "finalCheckoutButton" value = "Checkout"><br>
+			</form>
         </main>
         <script src="index.js"></script>  
     </body>
     <footer id="searchFooter">
         <p>&copy; 2020 NED's Grocery</p>
     </footer>
-    <script src="index.js"></script>  
 </html>
