@@ -145,9 +145,9 @@
 				<h2>Total Grocery Price:</h2>
 				<h3>Gross Total: $ <?php echo number_format($grossTotal, 2); ?></h3>
 				<h3>Shipping Costs: $ 6.99</h3>
-				<h3>__________________________________</h3>
+				<h3>______________________</h3>
 				<h2>Total Factored Cost: $ <?php echo number_format($totalOverallCost, 2); ?></h2>
-				<h3>__________________________________</h3>
+				<h3>______________________</h3>
 				
 				<label>Card Holder Name:</label>
 				<input type = "text" name = "cardName" id = "cardName" value = "<?php echo $userAccount['firstName']; ?> <?php echo $userAccount['lastName']; ?>" required><br>
