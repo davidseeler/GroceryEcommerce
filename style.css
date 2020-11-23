@@ -1236,7 +1236,7 @@ button{
 #orderSummary {
 	clear: both;
 	background-color: whitesmoke;
-	border: 2px dashed Black;
+	border: 2px solid Black;
 	width: 40%;
 	text-align: center;
 	margin-left: 30%;
