@@ -1010,7 +1010,7 @@ button{
 #cartMain{
 	margin: auto;
 	background-color: whitesmoke;
-	width: 80%;
+	width: 60%;
 	padding-bottom: 5%;
 	border: 3px solid black;
 	height: auto;
@@ -1033,8 +1033,9 @@ button{
 #itemList {
 	margin: auto;
 	width: 100%;
-	margin-left: 10%;
-	padding-top:15px;
+	margin-left: 20%;
+	margin-right: 20%;
+	padding-top: 15px;
 }
 
 #itemTable {
@@ -1065,12 +1066,12 @@ button{
 #itemTotals {
 	margin: auto;
 	width: 95%;
-	margin-left: 100px;
+	margin-left: 20%;
 }
 
 #checkoutButtonFormatting {
 	margin-bottom: 30px;
-	margin-left: 310px;
+	margin-left: 20%;
 }
 
 #newCheckoutButton{
@@ -1122,7 +1123,7 @@ button{
 }
 
 #rtsButtonFormatting {
-	margin-left: 310px;
+	margin-left: 20%;
 	margin-bottom: 30px;
 }
 
@@ -1135,7 +1136,7 @@ button{
 }
 
 #editAccountFormatting {
-	margin-left: 310px;
+	margin-left: 20%;
 }
 
 #editAccountButton{
