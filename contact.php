@@ -1,17 +1,13 @@
 <?php
-    include('database.php');
+	include('database.php');
     session_start();
 
     $cartID = @$_SESSION['cartID'];
-    
-    $statement = "DELETE FROM cartDetail WHERE cartID='$cartID'";
-    $db->exec($statement);
 
     $query = "SELECT SUM(quantity) FROM cartDetail WHERE cartID='$cartID'";
     $itemCount = $db->query($query);
     $itemCount = $itemCount->fetch();
 ?>
-
 <html lang="en" id="homeHTML">
     <head>
         <meta charset="UTF-8">
@@ -21,11 +17,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="slider.css">
         <link rel="stylesheet" href="style.css">
-        <script data-require="jquery@3.1.1" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="script.js"></script>
+		<script type = "text/javascript" src = "checkout_check.js"></script>
     </head>
-    <body id="homeBody">
-    <form method="POST" action="search.php">
+    <body id="homeBodyMain">
+        <form method="POST" action="search.php">
             <header>
                 <nav id="homeNav">
                     <div id="mySidenav" class="sidenav">
@@ -43,7 +38,7 @@
                             <button id="searchButton" type=submit><i class="fa fa-search"></i></button>
                     </div>
                     <div id="accountBox">
-                       <a id="accountLink" href="account.php"><image id="accountIcon" src="images/accountIcon.png"></image>
+                        <a id="accountLink" href="account.php"><image id="accountIcon" src="images/accountIcon.png"></image>
                             <?php
                                 if (isset($_SESSION['username'])){
                                     echo $_SESSION['username'];
@@ -73,24 +68,35 @@
                 </nav>
             </header>
         </form>
-        <main id="homeMain">
-            <div id="orderInfo">
-                <p>
-                    Your order has been successfully placed!<br>
-                    ORDER # 111-7670127-6938636
-                </p>
-
-                <p>
-                    Estimated delivery: 3 business days
-                </p>
-
-                <a href="home.php">Return to Home</p>
-            </div>
-        </main>
+		<main id = "contactMain">
+			<div id = "nickInfo">
+				<img id = "nickPicture" src = "images/nickImage.jpg">
+				<h3 id = "nickName">Name: Nick Evans</h3>
+				<h3 id = "nickEmail">Email: nbe20420@uga.edu</h3>
+			</div>
+			<div id = "bigN">
+				<h2 id = "bigN">N</h2>
+			</div>
+			<div id = "erikInfo">
+				<img id = "erikPicture" src = "images/erikImage.jpg">
+				<h3 id = "erikName">Name: Erik Prince</h3>
+				<h3 id = "erikEmail">Email: edp93729@uga.edu</h3>
+			</div>
+			<div id = "bigE">
+				<h2 id = "bigE">E</h2>
+			</div>
+			<div id = "davidInfo">
+				<img id = "davidPicture" src = "images/davidImage.jpg">
+				<h3 id = "davidName">Name: David Seeler</h3>
+				<h3 id = "davidEmail">Email: David.Seeler@uga.edu</h3>
+			</div>
+			<div id = "bigD">
+				<h2 id = "bigD">D</h2>
+			</div>
+		</main>
         <script src="index.js"></script>  
     </body>
     <footer id="searchFooter">
         <p>&copy; 2020 NED's Grocery</p>
     </footer>
-    <script src="index.js"></script>  
 </html>

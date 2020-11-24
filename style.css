@@ -987,3 +987,105 @@ div#slider figure {
 button{
     outline: none;
 }
+
+/**
+	Styling for contact.html
+**/
+
+#contactMain {
+	width: 80%;
+	margin: auto;
+	height: 1100px;
+}
+
+#erikPicture {
+	margin-right: 35px;
+	height: 100px;
+	float: right;
+}
+
+#nickPicture {
+	margin-left: 35px;
+	height: 100px;
+	float: left;
+}
+
+#davidPicture {
+	margin-left: 35px;
+	height: 100px;
+	float: left;
+}
+
+#nickInfo {
+	padding-top: 35px;
+	padding-bottom: 50px;
+	margin-bottom: 50px;
+	background-color: whitesmoke;
+	border: 2px solid black;
+	border-radius: 10px;
+}
+
+#nickName {
+	margin-left: 150px;
+}
+
+#nickEmail {
+	margin-left: 150px;
+}
+
+#erikInfo {
+	padding-top: 35px;
+	padding-bottom: 50px;
+	margin-bottom: 50px;
+	background-color: whitesmoke;
+	border: 2px solid black;
+	border-radius: 10px;
+}
+
+#erikName {
+	text-align: right;
+	margin-right: 150px;
+}
+
+#erikEmail {
+	text-align: right;
+	margin-right: 150px;
+}
+
+#davidInfo {
+	padding-top: 35px;
+	padding-bottom: 50px;
+	margin-bottom: 50px;
+	background-color: whitesmoke;
+	border: 2px solid black;
+	border-radius: 10px;
+}
+
+#davidName {
+	margin-left: 150px;
+}
+
+#davidEmail {
+	margin-left: 150px;
+}
+
+#bigN {
+	margin-top: -50px;
+	margin-bottom: -10px;
+	font-size: 300%;
+	font-family: Impact, Charcoal, sans-serif;
+}
+
+#bigE {
+	margin-top: -50px;
+	margin-bottom: -10px;
+	font-size: 300%;
+	font-family: Impact, Charcoal, sans-serif;
+}
+
+#bigD {
+	margin-top: -50px;
+	margin-bottom: -10px;
+	font-size: 300%;
+	font-family: Impact, Charcoal, sans-serif;
+}
