@@ -22,10 +22,10 @@ CREATE TABLE IF NOT EXISTS cart (
 );
 
 CREATE TABLE IF NOT EXISTS cartDetail (
-  cartDetailID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   cartID INT NOT NULL,
   productID INT NOT NULL,
-  quantity INT NOT NULL
+  quantity INT NOT NULL,
+  PRIMARY KEY (cartID, productID)
 );
 
 CREATE TABLE IF NOT EXISTS account (
@@ -44,4 +44,5 @@ CREATE TABLE IF NOT EXISTS account (
   city VARCHAR(20) NOT NULL,
   state VARCHAR(20) NOT NULL
 );
+
 
