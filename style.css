@@ -1036,6 +1036,8 @@ button{
 	text-align: center;
 	padding-left: 20px;
 	padding-right: 20px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-weight: bold;
 }
 
 .titleRight {
@@ -1045,12 +1047,12 @@ button{
 #itemList {
 	margin: auto;
 	width: 90%;
-	margin-left: 10%;
-	margin-right: 20%;
 	padding-top: 15px;
 }
 
 #itemTable {
+	margin: 0 auto;
+	width: 95%;
 	border: 2px solid Black;
 	border-collapse: collapse;
 	padding-top: 15px;
@@ -1065,22 +1067,29 @@ button{
 	vertical-align: bottom;
 }
 
-#rowName {
-	padding-left: 50px;
+#itemName {
+	text-align: center;
+	padding-left: 20px;
+	padding-right: 20px;
+	width: 90px;
 }
 
-#itemName {
-	padding-right: 30px;
-	width: 100px;
-	text-align: center;
+#itemNameContainer {
+	margin: 0 auto;
+	padding: 0 auto;
+	width: 95%;
 }
 
 #itemQuant {
+	text-align: center;
 	padding-right: 15px;
+	width: 70px;
 }
 
 #itemPrice {
+	text-align: center;
 	padding-right: 15px;
+	width: 70px;
 }
 
 #deleteItem {
@@ -1121,11 +1130,8 @@ button{
     background-color: orangered;
     width: 25px;
     height: 25px;
-    position: absolute;
     border: 2px solid rgb(216, 216, 216);
-    outline: none;
-	margin-left: 19px;
-	margin-top: -10px;
+	margin: 0 auto;
 }
 
 #deleteItemButton:hover{
@@ -1147,7 +1153,7 @@ button{
 
 #checkoutButtonFormatting {
 	margin-bottom: 30px;
-	margin-left: 10%;
+	margin-left: 15%;
 }
 
 #newCheckoutButton{
@@ -1204,7 +1210,7 @@ button{
 }
 
 #rtsButtonFormatting {
-	margin-left: 10%;
+	margin-left: 15%;
 	margin-bottom: 30px;
 }
 
@@ -1217,7 +1223,7 @@ button{
 }
 
 #editAccountFormatting {
-	margin-left: 10%;
+	margin-left: 15%;
 }
 
 #editAccountButton{
@@ -1265,7 +1271,6 @@ button{
 	float: left;
 	margin-top: 25px;
 	margin-left: 5%;
-	margin-bottom: 10%;
 	padding: 10px 10px 10px;
 	padding-bottom: -20px;
 	background-color: whitesmoke;
@@ -1318,16 +1323,14 @@ button{
 	border: 2px solid Black;
 	width: 40%;
 	text-align: center;
-	margin-left: 30%;
-	padding-top: 20px;
+	margin: 0 auto;
 	padding-bottom: 20px;
-	margin-top: 10%;
 	border-radius: 10px;
 }
 
 #orderSummary label {
 	float: left;
-	width: 45%;
+	width: 40%;
 	text-align: right;
 	margin-left: 0%;
 }
@@ -1336,6 +1339,7 @@ button{
 	width: 50%;
 	margin-left: 1em;
 	margin-bottom: 0.5em;
+	margin-right: 1em;
 }
 
 #orderSummary input.code{

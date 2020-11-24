@@ -45,7 +45,7 @@
                         <a href="search.php">Search</a>
                         <a href="search.php">Department</a>
                         <a href="checkout.php">Checkout</a>
-                        <a href="contact.html">Contact</a>
+                        <a href="contact.php">Contact</a>
                     </div>
                     <span id="menuButton" onclick="openNav()">&#9776;</span>
                     <a href="home.php"><img id="logo" src="images/logo.png"></a>
@@ -92,10 +92,10 @@
 							if ($itemCount['SUM(quantity)'] != NULL) {
 								echo "<tr>
 										<th>&nbsp;</th>
-										<th id = 'rowName' class = 'right'>Name</th>
-										<th class = 'right'>Quantity</th>
-										<th class = 'right'>Price</th>
-										<th class = 'right'>Total Price</th>
+										<th style='text-align: center;'>Name</th>
+										<th style='text-align: center;'>Quantity</th>
+										<th style='text-align: center;'>Price</th>
+										<th style='text-align: center;'>Total Price</th>
 										<th>Delete all</th>
 									</tr>";
 							}
@@ -128,11 +128,11 @@
 								$grandTotal += $totalPrice;
 						?>
 						<tr>
-							<td id = "itemPic"><img class = "cartPic" src = "<?php echo $product['imgLink'];?>">
-							<td id = "itemName" class = "right"><?php echo $product['name']; ?></td>
-							<td id = "itemQuant" class = "right"><?php echo $itemQuantity; ?></td>
-							<td id = "itemPrice" class = "right">$ <?php echo $product['price']; ?></td>
-							<td id = "itemTotalPrice" class = "right">$ <?php echo number_format($totalPrice, 2); ?></td>
+							<td id = "itemPic"><div class = "frame"><img class = "cartPic" src = "<?php echo $product['imgLink'];?>"></div></td>
+							<td id = "itemName" class = "checkoutTableRow"><div id = "itemNameContainer"><?php echo $product['name']; ?></div></td>
+							<td id = "itemQuant" class = "checkoutTableRow"><?php echo $itemQuantity; ?></td>
+							<td id = "itemPrice" class = "checkoutTableRow">$ <?php echo $product['price']; ?></td>
+							<td id = "itemTotalPrice" class = "checkoutTableRow">$ <?php echo number_format($totalPrice, 2); ?></td>
 							<td id = "deleteItem"><form action = "delete_from_cart.php" method = "post">
 								<input type = "hidden" name = "delete"
 									value = "<?php echo $product['productID']; ?>">
@@ -141,7 +141,6 @@
 						<?php endforeach; ?>
 					</tbody>
 				</table>
-				<h3>___________________________________________</h3>
 			</div>
 			<div id = "itemTotals">
 				<?php 
@@ -153,13 +152,13 @@
 				<h3>Grand Total:</h3>
 				<h4>Before Taxes: $ <?php echo number_format($grandTotal, 2); ?></h4> 
 				<h4>Sales Tax: $ <?php echo number_format($salesTax, 2); ?></h4>
-				<h4>Final Price: $ <?php echo number_format($grossTotal, 2); ?></h4>
+				<h2>Final Price: $ <?php echo number_format($grossTotal, 2); ?></h2>
 			</div>
 			<div id = "checkoutButtonFormatting">
 				<a id="newCheckoutButton" href="checkout.php"><img id = "shopCartIcon" src = "images/shopping_cart_right.png">CLICK TO CHECKOUT</a><br>
 			</div>
 			<div id = "rtsButtonFormatting">
-				<a id="backToShoppingButton" href="search.php"><img id = "returnToShopIcon" src = "images/back.png">   BACK TO SHOPPING </a>
+				<a id="backToShoppingButton" href="search.php"><img id = "returnToShopIcon" src = "images/back.png">   BACK TO SHOPPING </a><br>
 			</div>
 			<div id = "editAccountFormatting">
 				<a id="editAccountButton" href="account.php"><img id = "backToAccountIcon" src = "images/accountIcon.png">   EDIT ACCOUNT  </a>
