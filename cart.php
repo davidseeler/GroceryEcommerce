@@ -96,7 +96,7 @@
 										<th style='text-align: center;'>Quantity</th>
 										<th style='text-align: center;'>Price</th>
 										<th style='text-align: center;'>Total Price</th>
-										<th>Delete all</th>
+										<th style='text-align: center;'>Delete all</th>
 									</tr>";
 							}
 							else {
