@@ -103,7 +103,7 @@
         </form>
         <main id = "checkoutMain" onload = enable_text(false);>
 			<div id = "shippingInfo">
-				<h2>Shipping Information</h2>
+				<h2 id = "shipInfoTitle">Shipping Information</h2>
 				<label>Name:</label>
 				<input type = "text" id = "shipName" value = "<?php echo $userAccount['firstName']; ?> <?php echo $userAccount['lastName']; ?>" required><br>
 				
@@ -122,7 +122,7 @@
 				<input type= "checkbox" name = "diffShip" id = "diffShip" onclick = "enable_text(this.checked)" >Different Billing Address?<br>
 			</div>
 			<form name = "billingInfo" id = "billingInfo" method = "post">
-				<h2>Billing Information</h2>
+				<h2 id = "billInfoTitle">Billing Information</h2>
 				
 				<label id = "billNameLabel">Name:</label>
 				<input type = "text" name = "billName" id = "billName" value = "<?php echo $userAccount['firstName']; ?> <?php echo $userAccount['lastName']; ?>" required disabled><br>
@@ -160,8 +160,10 @@
 				
 				<label>Security Code:</label>
 				<input type = "text" class = "code" name = "cardCode" required>
-							
-				<input type = "submit" id = "finalCheckoutButton" value = "Checkout"><br>
+				
+				<div id = "finalCheckoutContainer">
+					<input type = "submit" id = "finalCheckoutButton" value = "Checkout"><br>
+				</div>
 			</form>
         </main>
         <script src="index.js"></script>  

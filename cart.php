@@ -85,6 +85,7 @@
             </header>
         </form>
         <main id = "cartMain">
+		<h2 id = "shoppingCartTitle">Shopping Cart</h2>
 			<div id = "itemList">
 				<table id = "itemTable">
 					<thead id = "cartTitles">
@@ -100,7 +101,7 @@
 									</tr>";
 							}
 							else {
-								echo "<h4>Cart is Empty</h4>";
+								echo "<h4 style='text-align: center;'>Cart is Empty</h4>";
 							}
 						?>
 					</thead>
@@ -149,19 +150,22 @@
 					$grossTotal = $grandTotal * 1.04;
 					$_SESSION['grossTotal'] = $grossTotal;
 				?>
-				<h3>Grand Total:</h3>
+				<h3>Calculate Total:</h3>
 				<h4>Before Taxes: $ <?php echo number_format($grandTotal, 2); ?></h4> 
 				<h4>Sales Tax: $ <?php echo number_format($salesTax, 2); ?></h4>
+				<h3>________________________</h3>
 				<h2>Final Price: $ <?php echo number_format($grossTotal, 2); ?></h2>
 			</div>
-			<div id = "checkoutButtonFormatting">
-				<a id="newCheckoutButton" href="checkout.php"><img id = "shopCartIcon" src = "images/shopping_cart_right.png">CLICK TO CHECKOUT</a><br>
-			</div>
-			<div id = "rtsButtonFormatting">
-				<a id="backToShoppingButton" href="search.php"><img id = "returnToShopIcon" src = "images/back.png">   BACK TO SHOPPING </a><br>
-			</div>
-			<div id = "editAccountFormatting">
-				<a id="editAccountButton" href="account.php"><img id = "backToAccountIcon" src = "images/accountIcon.png">   EDIT ACCOUNT  </a>
+			<div id = "cartButtonContainer">
+				<div id = "checkoutButtonFormatting">
+					<a id="newCheckoutButton" href="checkout.php"><img id = "shopCartIcon" src = "images/shopping_cart_right.png">CLICK TO CHECKOUT</a><br>
+				</div>
+				<div id = "rtsButtonFormatting">
+					<a id="backToShoppingButton" href="search.php"><img id = "returnToShopIcon" src = "images/back.png">   BACK TO SHOPPING </a><br>
+				</div>
+				<div id = "editAccountFormatting">
+					<a id="editAccountButton" href="account.php"><img id = "backToAccountIcon" src = "images/accountIcon.png">   EDIT ACCOUNT  </a>
+				</div>
 			</div>
         </main>
         <script src="index.js"></script>  

@@ -1032,6 +1032,10 @@ button{
     font-size: 13px;
 }
 
+#shoppingCartTitle {
+	text-align: center;
+}
+
 .checkoutTableRow {
 	text-align: center;
 	padding-left: 20px;
@@ -1059,12 +1063,11 @@ button{
 }
 
 .frame {
-	display: table-cell;
-	vertical-align: middle;
+	margin: 0 auto;	
 }
 
 #itemPic {
-	vertical-align: bottom;
+	margin: 0 auto;
 }
 
 #itemName {
@@ -1146,14 +1149,16 @@ button{
 }
 
 #itemTotals {
-	margin: auto;
+	margin: 0 auto;
 	width: 95%;
-	margin-left: 10%;
+	text-align: center;
 }
 
 #checkoutButtonFormatting {
+	text-align: center;
+	margin: 0 auto;
+	width: 70%;
 	margin-bottom: 30px;
-	margin-left: 15%;
 }
 
 #newCheckoutButton{
@@ -1167,9 +1172,7 @@ button{
     color: Black;
     text-transform: uppercase;
     border-radius: 12px; 
-    padding: 8px 12px 8px 12px;
-    padding-left: 60px;
-    padding-right: 60px;
+    padding: 8px 60px 8px 60px;
 }
 
 #newCheckoutButton a {
@@ -1210,7 +1213,9 @@ button{
 }
 
 #rtsButtonFormatting {
-	margin-left: 15%;
+	text-align: center;
+	margin: 0 auto;
+	width: 70%;
 	margin-bottom: 30px;
 }
 
@@ -1223,7 +1228,9 @@ button{
 }
 
 #editAccountFormatting {
-	margin-left: 15%;
+	text-align: center;
+	margin: 0 auto;
+	width: 70%;
 }
 
 #editAccountButton{
@@ -1254,16 +1261,31 @@ button{
     margin-right: 9px;
 }
 
+#cartButtonContainer {
+	margin: 0 auto;
+	width: 75%;
+	background: #d9d9d9;
+	background-image: url("images/vegetables.png");
+}
+
 .cartPic {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 	height: 50px;
 }
 
+/**
+	Checkout.php Formatting
+**/
+
 #checkoutMain{
 	margin: auto;
-	background-color: whitesmoke;
-	width: 90%;
+	background-color: #d9d9d9;
+	width: 80%;
 	padding-bottom: 3%;
 	border: 3px solid black;
+	height: auto;
 }
 
 #shippingInfo{
@@ -1285,9 +1307,17 @@ button{
 }
 
 #shippingInfo input {
-	width: 15em;
+	width: 50%;
 	margin-left: 1em;
 	margin-bottom: 0.5em;
+}
+
+#shipInfoTitle {
+	text-align: center;
+}
+
+#billInfoTitle {
+	text-align: center;
 }
 
 #billingInfo{
@@ -1308,7 +1338,7 @@ button{
 }
 
 #billingInfo input {
-	width: 15em;
+	width: 50%;
 	margin-left: 1em;
 	margin-bottom: 0.5em;
 }
@@ -1321,7 +1351,7 @@ button{
 	clear: both;
 	background-color: whitesmoke;
 	border: 2px solid Black;
-	width: 40%;
+	width: 45%;
 	text-align: center;
 	margin: 0 auto;
 	padding-bottom: 20px;
@@ -1354,7 +1384,7 @@ button{
     text-decoration: none;
     border: 2px solid Black;
     font-weight: bold;
-    background: #ffcc66;
+    background: #ffab00;
     font-size: 15px;
     line-height: 18px;
 	letter-spacing: 1px;
@@ -1362,13 +1392,21 @@ button{
     text-transform: uppercase;
     border-radius: 12px; 
     padding: 8px 12px 8px 12px;
-    padding-left: 60px;
-    padding-right: 60px;
 }
 
 #finalCheckoutButton:hover{
     background-image: repeating-linear-gradient(to bottom right, #ffcc66, #ffffff);
 }
+
+#finalCheckoutContainer {
+	text-align: center;
+	margin: 0 auto;
+	width: 70%;
+}
+
+/**
+	contact.php formatting
+**/
 
 #contactMain {
 	width: 80%;
