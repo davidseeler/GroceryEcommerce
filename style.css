@@ -1008,10 +1008,12 @@ button{
 ****************************/
 
 #cartMain{
-	margin: auto;
+	margin: 0 auto;
+	padding: 0;
 	background-color: whitesmoke;
 	width: 60%;
 	padding-bottom: 5%;
+	margin-bottom: 5%;
 	border: 3px solid black;
 	height: auto;
 	border-radius: 10px;
@@ -1030,9 +1032,10 @@ button{
     font-size: 13px;
 }
 
-.right {
-	text-align: right;
-	padding-right: 10px;
+.checkoutTableRow {
+	text-align: center;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 .titleRight {
@@ -1053,12 +1056,23 @@ button{
 	padding-top: 15px;
 }
 
+.frame {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#itemPic {
+	vertical-align: bottom;
+}
+
 #rowName {
-	text-align: right;
+	padding-left: 50px;
 }
 
 #itemName {
-	padding-right: 15px;
+	padding-right: 30px;
+	width: 100px;
+	text-align: center;
 }
 
 #itemQuant {
@@ -1144,12 +1158,17 @@ button{
     font-size: 15px;
     line-height: 18px;
 	letter-spacing: 1px;
-    color: solid Black;
+    color: Black;
     text-transform: uppercase;
     border-radius: 12px; 
     padding: 8px 12px 8px 12px;
     padding-left: 60px;
     padding-right: 60px;
+}
+
+#newCheckoutButton a {
+	text-decoration: none;
+	color: solid Black;
 }
 
 #newCheckoutButton:hover{
@@ -1172,7 +1191,7 @@ button{
     font-size: 15px;
     line-height: 18px;
 	letter-spacing: 1px;
-    color: solid Black;
+    color: Black;
     text-transform: uppercase;
     border-radius: 12px; 
     padding: 8px 12px 8px 12px;
@@ -1209,7 +1228,7 @@ button{
     font-size: 15px;
     line-height: 18px;
 	letter-spacing: 1px;
-    color: solid Black;
+    color: Black;
     text-transform: uppercase;
     border-radius: 12px; 
     padding: 8px 12px 8px 12px;
@@ -1231,10 +1250,6 @@ button{
 
 .cartPic {
 	height: 50px;
-}
-
-.right {
-	text-align: right;
 }
 
 #checkoutMain{
