@@ -1069,6 +1069,11 @@ button{
 	margin-left: 150px;
 }
 
+#davidPicture{
+    width: 100px;
+    height: 100px;
+}
+
 #bigN {
 	margin-top: -50px;
 	margin-bottom: -10px;

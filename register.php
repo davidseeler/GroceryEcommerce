@@ -66,9 +66,9 @@
             
         } else {
 
-            $statement = "INSERT INTO account (username, password, hashed_password, cartID, creditCard, email, phone, firstName, lastName,
+            $statement = "INSERT INTO account (username, hashed_password, cartID, creditCard, email, phone, firstName, lastName,
             address1, country, zipcode, city, state)
-            VALUES ('$username', '$password', '$hashed_password', $cartID, '$creditcard', '$email', '$phone', '$firstName', '$lastName', '$address1',
+            VALUES ('$username', '$hashed_password', $cartID, '$creditcard', '$email', '$phone', '$firstName', '$lastName', '$address1',
             '$country', '$zipcode', '$city', '$state')";
             $db->exec($statement);
 

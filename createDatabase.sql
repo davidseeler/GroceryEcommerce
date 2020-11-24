@@ -30,7 +30,6 @@ CREATE TABLE IF NOT EXISTS cartDetail (
 
 CREATE TABLE IF NOT EXISTS account (
   username VARCHAR(20) NOT NULL PRIMARY KEY,
-  password VARCHAR(20) NOT NULL,
   hashed_password VARCHAR(255) NOT NULL,
   cartID INT NOT NULL,
   creditCard VARCHAR(16) NOT NULL,

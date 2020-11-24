@@ -64,8 +64,7 @@ require('database.php');
                         // validate username and password
                         $username = $_POST['username'];
                         $password = $_POST['password'];
-                        $query = "SELECT * FROM account WHERE username = '$username' 
-                                    AND password = '$password'";
+                        $query = "SELECT * FROM account WHERE username = '$username'";
                         $statement = $db->prepare($query);
                         $statement->execute();
                         $account = $statement->fetch();

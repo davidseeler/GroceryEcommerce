@@ -86,7 +86,7 @@
 				<h2 id = "bigE">E</h2>
 			</div>
 			<div id = "davidInfo">
-				<img id = "davidPicture" src = "images/davidImage.jpg">
+				<img id = "davidPicture" src = "images/davidImage.jpg" style="width: 100px; height: 100px;">
 				<h3 id = "davidName">Name: David Seeler</h3>
 				<h3 id = "davidEmail">Email: David.Seeler@uga.edu</h3>
 			</div>
