@@ -75,6 +75,9 @@ require('database.php');
                             $_SESSION['username'] = $account['username'];
                             $_SESSION['cartID'] = $account['cartID'];
 
+                            // Set cookie after signing in
+                            setcookie("userID", $username, strtotime('+1 hour'), '/');
+
                             header("Location: home.php");
                             exit;
                         } else {

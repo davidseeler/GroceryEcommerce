@@ -2,6 +2,7 @@
     include('database.php');
     session_start();
 
+    $userID = @$_COOKIE["userID"];
     $cartID = @$_SESSION['cartID'];
 
     $query = "SELECT SUM(quantity) FROM cartDetail WHERE cartID='$cartID'";

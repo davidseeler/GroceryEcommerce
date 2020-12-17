@@ -7,6 +7,7 @@
     }
 
     if (isset($_POST['signout'])){
+        setcookie('userID', '', strtotime('-1 hour'), '/');
         session_unset();
         header("Location: signin.php");
     }
